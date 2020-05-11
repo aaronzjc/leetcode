@@ -1,6 +1,6 @@
 package medium
 
-// 地址: https://leetcode-cn.com/problems/add-two-numbers/
+// https://leetcode-cn.com/problems/add-two-numbers/
 
 type ListNode struct {
 	Val  int

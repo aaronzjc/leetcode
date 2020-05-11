@@ -1,6 +1,6 @@
 package easy
 
-// 地址: https://leetcode-cn.com/problems/two-sum/
+// https://leetcode-cn.com/problems/two-sum/
 
 func twoSum(nums []int, target int) []int {
 	for i := 0; i < len(nums); i++ {
