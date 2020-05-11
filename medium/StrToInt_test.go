@@ -9,7 +9,7 @@ func TestStrToInt(t *testing.T) {
 	result := myAtoi(input)
 
 	if result != expect {
-		t.Error("failed !")
+		t.Fatalf("failed !")
 	}
 
 	t.Log("StrToInt passed !")

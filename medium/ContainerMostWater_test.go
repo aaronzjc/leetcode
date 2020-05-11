@@ -9,7 +9,7 @@ func TestContainerMostWater(t *testing.T) {
 	result := maxArea(input)
 
 	if result != expect {
-		t.Error("failed !")
+		t.Fatalf("failed !")
 	}
 
 	t.Log("ContainerMostWater passed !")

@@ -40,8 +40,7 @@ func TestAddTwoNumbers(t *testing.T) {
 	result := travel(addTwoNumbers(g1, g2))
 
 	if !reflect.DeepEqual(result, expect) {
-		t.Log(result, expect)
-		t.Error("failed !")
+		t.Fatalf("failed !")
 	}
 	t.Log("AddTwo passed")
 }

@@ -9,7 +9,7 @@ func TestReverseInt(t *testing.T) {
 	result := reverse(input)
 
 	if result != expect {
-		t.Error("failed !")
+		t.Fatalf("failed !")
 	}
 
 	t.Log("ReverseInt passed !")

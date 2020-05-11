@@ -13,7 +13,7 @@ func TestSumTwo(t *testing.T) {
 	result := twoSum(nums, target)
 
 	if !reflect.DeepEqual(result, expect) {
-		t.Error("failed !")
+		t.Fatalf("failed !")
 	}
 	t.Log("SumTwo passed")
 }

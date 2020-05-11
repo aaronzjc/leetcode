@@ -10,7 +10,7 @@ func TestFindMedianSortedArrays(t *testing.T) {
 	result := findMedianSortedArrays(input1,input2)
 
 	if result != expect {
-		t.Error("failed !")
+		t.Fatalf("failed !")
 	}
 
 	t.Log("FindMedianSortedArrays passed !")

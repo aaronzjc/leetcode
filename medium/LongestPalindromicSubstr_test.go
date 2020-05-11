@@ -9,7 +9,7 @@ func TestLongestPalindromic(t *testing.T)  {
 	result := longestPalindrome(input)
 
 	if result != expect {
-		t.Error("failed !")
+		t.Fatalf("failed !")
 	}
 
 	t.Log("LongestPalindromic Passed !")

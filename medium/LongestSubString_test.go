@@ -8,7 +8,7 @@ func TestLongestSubString(t *testing.T) {
 
 	result := lengthOfLongestSubstring(input)
 	if result != expect {
-		t.Error("failed !")
+		t.Fatalf("failed !")
 	}
 
 	t.Log("LongestSubString passed !")
