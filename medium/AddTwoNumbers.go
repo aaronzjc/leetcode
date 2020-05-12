@@ -8,9 +8,9 @@ type ListNode struct {
 }
 
 func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
-	var res,tmp *ListNode
+	var res, tmp *ListNode
 	var val, pass int
-	for l1 != nil || l2 != nil{
+	for l1 != nil || l2 != nil {
 		val = 0
 		node := ListNode{
 			Val:  val,

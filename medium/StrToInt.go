@@ -15,7 +15,7 @@ func myAtoi(str string) int {
 
 	bk := false
 
-	for i := 0;i < len(bs);i++ {
+	for i := 0; i < len(bs); i++ {
 		switch bs[i] {
 		case 43:
 			if i != 0 {
@@ -29,8 +29,8 @@ func myAtoi(str string) int {
 				bk = true
 			}
 			break
-		case 48,49,50,51,52,53,54,55,56,57:
-			result = result * 10 + (int(bs[i]) - '0')
+		case 48, 49, 50, 51, 52, 53, 54, 55, 56, 57:
+			result = result*10 + (int(bs[i]) - '0')
 			if result*prefix > math.MaxInt32 {
 				return math.MaxInt32
 			}

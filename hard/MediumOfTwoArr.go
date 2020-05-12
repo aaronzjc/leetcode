@@ -12,7 +12,7 @@ func findMedianSortedArrays(nums1 []int, nums2 []int) float64 {
 		small, large = nums2, nums1
 	}
 	var left, right int
-	if (len1 + len2) % 2 != 0 {
+	if (len1+len2)%2 != 0 {
 		left = (len1 + len2) / 2
 		right = left
 	} else {
@@ -20,7 +20,7 @@ func findMedianSortedArrays(nums1 []int, nums2 []int) float64 {
 		right = (len1 + len2 + 1) / 2
 	}
 	j := 0
-	for i := 0; i < len(large);i++ {
+	for i := 0; i < len(large); i++ {
 		for j < len(small) {
 			if small[j] > large[i] {
 				break
