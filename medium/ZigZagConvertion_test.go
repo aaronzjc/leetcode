@@ -9,7 +9,7 @@ func TestZigZagConvertion(t *testing.T)  {
 		expect string
 	}{
 		{input:"", rows:1, expect:""},
-		{input:"A", rows:1, expect:"A"},
+		{input:"A", rows:2, expect:"A"},
 		{input:"AB", rows:2, expect:"AB"},
 		{input: "LEETCODEISHIRING", rows: 3, expect: "LCIRETOESIIGEDHN"},
 	}

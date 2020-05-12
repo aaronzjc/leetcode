@@ -1,55 +1,41 @@
 package medium
 
-import "fmt"
-
 // https://leetcode-cn.com/problems/zigzag-conversion/
 
-func findNextPos(s, numRows, max int) []int {
-	var next1, next2 int
-	var point []int
-	l := s
-	point = append(point, s)
-	for {
-		r1 := numRows - 1 - l
-		r2 := l
-		next1 = 2 * r1 + s
-		next2 = 2 * r2 + next1
-		if next1 > max {
-			break
-		}
-		if r1 != 0 {
-			point = append(point, next1)
-		}
-		if next2 > max {
-			break
-		}
-		if r2 != 0 {
-			point = append(point, next2)
-		}
-
-		s = next2
-	}
-
-	return point
-}
-
 func zigZagConvertion(s string, numRows int) string {
-	if s == "" || numRows == 1 {
+	if s == "" || numRows == 1 || len(s) <= numRows {
 		return s
 	}
-	var ps []int
+	var next1, next2, sp int
+	var res []rune
+	sr := []rune(s)
+	slen := len(s) -1
 	i := 0
-	for i < numRows {
-		t := findNextPos(i, numRows, len(s)-1)
-		fmt.Println(t)
-		ps = append(ps, t...)
+	for i < numRows && i < slen {
+		sp = i
+		res = append(res, sr[sp])
+		for {
+			r1 := numRows - 1 - i
+			r2 := i
+			next1 = 2 * r1 + sp
+			next2 = 2 * r2 + next1
+			if next1 > slen {
+				break
+			}
+			if r1 != 0 {
+				res = append(res, sr[next1])
+			}
+			if next2 > slen {
+				break
+			}
+			if r2 != 0 {
+				res = append(res, sr[next2])
+			}
+
+			sp = next2
+		}
 		i++
 	}
-	var res string
-	rs := []rune(s)
-	for _, v := range ps {
-		res = res + string(rs[v])
-	}
 
-	return res
+	return string(res)
 }
