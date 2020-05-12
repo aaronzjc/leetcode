@@ -12,21 +12,18 @@ func findNextPos(s, numRows, max int) []int {
 	for {
 		r1 := numRows - 1 - l
 		r2 := l
-
 		next1 = 2 * r1 + s
 		next2 = 2 * r2 + next1
 		if next1 > max {
 			break
 		}
-
-		if next1 != s {
+		if r1 != 0 {
 			point = append(point, next1)
 		}
-
 		if next2 > max {
 			break
 		}
-		if next1 != next2 {
+		if r2 != 0 {
 			point = append(point, next2)
 		}
 
