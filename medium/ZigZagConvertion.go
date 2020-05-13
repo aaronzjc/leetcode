@@ -9,7 +9,7 @@ func zigZagConvertion(s string, numRows int) string {
 	var next1, next2, sp int
 	var res []rune
 	sr := []rune(s)
-	slen := len(s) -1
+	slen := len(s) - 1
 	i := 0
 	for i < numRows && i < slen {
 		sp = i
@@ -17,8 +17,8 @@ func zigZagConvertion(s string, numRows int) string {
 		for {
 			r1 := numRows - 1 - i
 			r2 := i
-			next1 = 2 * r1 + sp
-			next2 = 2 * r2 + next1
+			next1 = 2*r1 + sp
+			next2 = 2*r2 + next1
 			if next1 > slen {
 				break
 			}

@@ -2,7 +2,7 @@ package medium
 
 import "testing"
 
-func TestLongestPalindromic(t *testing.T)  {
+func TestLongestPalindromic(t *testing.T) {
 	input := "cbbd"
 	expect := "bb"
 

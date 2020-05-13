@@ -7,7 +7,7 @@ func TestFindMedianSortedArrays(t *testing.T) {
 	input2 := []int{3, 4}
 	expect := 2.5
 
-	result := findMedianSortedArrays(input1,input2)
+	result := findMedianSortedArrays(input1, input2)
 
 	if result != expect {
 		t.Fatalf("failed !")

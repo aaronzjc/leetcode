@@ -4,7 +4,7 @@ import "testing"
 
 func TestIsPalindromeNumber(t *testing.T) {
 	seeds := []struct {
-		input int
+		input  int
 		expect bool
 	}{
 		{-123, false},

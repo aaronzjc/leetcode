@@ -16,9 +16,9 @@ func lengthOfLongestSubstring(s string) int {
 	var w []byte
 	str := []byte(s)
 	max := 0
-	for i := 0;i<strLen;i++ {
-		if idx := searchArr(str[i], w); idx >=0 {
-			w = w[(idx+1):]
+	for i := 0; i < strLen; i++ {
+		if idx := searchArr(str[i], w); idx >= 0 {
+			w = w[(idx + 1):]
 		}
 		w = append(w, str[i])
 		if len(w) > max {

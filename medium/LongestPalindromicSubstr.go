@@ -8,10 +8,10 @@ func longestPalindrome(s string) string {
 		return s
 	}
 	var res []byte
-	for i := 0;i < len(sArr);i++ {
+	for i := 0; i < len(sArr); i++ {
 		match := false
-		for j := len(sArr) - 1; j > i;j-- {
-			if j - i < len(res) - 1 {
+		for j := len(sArr) - 1; j > i; j-- {
+			if j-i < len(res)-1 {
 				break
 			}
 			end := -1
@@ -31,8 +31,8 @@ func longestPalindrome(s string) string {
 				}
 				n--
 			}
-			if match && (end - i + 1) > len(res) {
-				res = sArr[i:end+1]
+			if match && (end-i+1) > len(res) {
+				res = sArr[i : end+1]
 			}
 		}
 	}

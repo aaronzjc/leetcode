@@ -2,15 +2,15 @@ package medium
 
 import "testing"
 
-func TestZigZagConvertion(t *testing.T)  {
-	seeds := []struct{
-		input string
-		rows int
+func TestZigZagConvertion(t *testing.T) {
+	seeds := []struct {
+		input  string
+		rows   int
 		expect string
 	}{
-		{input:"", rows:1, expect:""},
-		{input:"A", rows:2, expect:"A"},
-		{input:"AB", rows:2, expect:"AB"},
+		{input: "", rows: 1, expect: ""},
+		{input: "A", rows: 2, expect: "A"},
+		{input: "AB", rows: 2, expect: "AB"},
 		{input: "LEETCODEISHIRING", rows: 3, expect: "LCIRETOESIIGEDHN"},
 	}
 
