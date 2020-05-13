@@ -4,19 +4,19 @@ package easy
 
 func romanToInt(s string) (res int) {
 	m := map[string]int{
-		"I": 1,
+		"I":  1,
 		"IV": 4,
-		"V": 5,
+		"V":  5,
 		"IX": 9,
-		"X": 10,
+		"X":  10,
 		"XL": 40,
-		"L": 50,
+		"L":  50,
 		"XC": 90,
-		"C": 100,
+		"C":  100,
 		"CD": 400,
-		"D": 500,
+		"D":  500,
 		"CM": 900,
-		"M": 1000,
+		"M":  1000,
 	}
 	var c, n string
 	i, l, rs := 0, len(s)-1, []byte(s)

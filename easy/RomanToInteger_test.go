@@ -2,11 +2,11 @@ package easy
 
 import "testing"
 
-func TestRomanToInteger(t *testing.T)  {
-	seeds := []struct{
-		input string
+func TestRomanToInteger(t *testing.T) {
+	seeds := []struct {
+		input  string
 		expect int
-	} {
+	}{
 		{"III", 3},
 		{"IV", 4},
 		{"IX", 9},
