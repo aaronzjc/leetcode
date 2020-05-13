@@ -3,11 +3,11 @@ package others
 import "testing"
 
 func TestGcd(t *testing.T) {
-	seeds := []struct{
-		a int
-		b int
+	seeds := []struct {
+		a      int
+		b      int
 		expect int
-	} {
+	}{
 		{1, 3, 1},
 		{2, 5, 1},
 		{5814, 8874, 306},
