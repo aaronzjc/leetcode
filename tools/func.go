@@ -6,16 +6,12 @@ import (
 	"sort"
 )
 
-func isArrEquals(a interface{}, b interface{}) bool {
-	return reflect.DeepEqual(a, b)
-}
-
 func IsIntArrEquals(a []int, b []int, order bool) bool {
 	if !order {
 		sort.Ints(a)
 		sort.Ints(b)
 	}
-	return isArrEquals(a, b)
+	return reflect.DeepEqual(a, b)
 }
 
 func IsStringArrEquals(a []string, b []string, order bool) bool {
@@ -23,7 +19,7 @@ func IsStringArrEquals(a []string, b []string, order bool) bool {
 		sort.Strings(a)
 		sort.Strings(b)
 	}
-	return isArrEquals(a, b)
+	return reflect.DeepEqual(a, b)
 }
 
 // 采用反射实现的一个比较，比较复杂，也不建议使用
