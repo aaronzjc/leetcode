@@ -1,18 +1,15 @@
 package medium
 
+import "github.com/aaronzjc/leetcode/tools"
+
 // https://leetcode-cn.com/problems/add-two-numbers/
 
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
-
-func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
-	var res, tmp *ListNode
+func addTwoNumbers(l1 *tools.ListNode, l2 *tools.ListNode) *tools.ListNode {
+	var res, tmp *tools.ListNode
 	var val, pass int
 	for l1 != nil || l2 != nil {
 		val = 0
-		node := ListNode{
+		node := tools.ListNode{
 			Val:  val,
 			Next: nil,
 		}
@@ -35,7 +32,7 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 		pass = (val + pass) / 10
 	}
 	if pass != 0 {
-		tmp.Next = &ListNode{
+		tmp.Next = &tools.ListNode{
 			Val:  pass,
 			Next: nil,
 		}

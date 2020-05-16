@@ -1,14 +1,15 @@
 package medium
 
 import (
+	"github.com/aaronzjc/leetcode/tools"
 	"reflect"
 	"testing"
 )
 
-func genList(s []int) *ListNode {
-	var l, r *ListNode
+func genList(s []int) *tools.ListNode {
+	var l, r *tools.ListNode
 	for _, v := range s {
-		tmp := &ListNode{
+		tmp := &tools.ListNode{
 			Val:  v,
 			Next: nil,
 		}
@@ -23,7 +24,7 @@ func genList(s []int) *ListNode {
 	return r
 }
 
-func travel(s *ListNode) (res []int) {
+func travel(s *tools.ListNode) (res []int) {
 	for s != nil {
 		res = append(res, s.Val)
 		s = s.Next

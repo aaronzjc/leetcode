@@ -3,10 +3,10 @@ package easy
 import "testing"
 
 func TestValidParenthese(t *testing.T) {
-	seeds := []struct{
-		input string
+	seeds := []struct {
+		input  string
 		expect bool
-	} {
+	}{
 		{"()()()({[]})[", false},
 		{"([({})])", true},
 		{"[[[", false},

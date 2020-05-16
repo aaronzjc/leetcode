@@ -3,7 +3,7 @@ package medium
 // https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/
 
 var (
-	m = map[string][]string {
+	m = map[string][]string{
 		"2": {"a", "b", "c"},
 		"3": {"d", "e", "f"},
 		"4": {"g", "h", "i"},

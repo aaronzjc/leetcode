@@ -24,6 +24,28 @@ func TestIsIntArrayEqual(t *testing.T) {
 	t.Log("passed !")
 }
 
+func TestIsStringArrayEqual(t *testing.T) {
+	seeds := []struct {
+		a      []string
+		b      []string
+		expect bool
+	}{
+		{[]string{"1", "2", "3"}, []string{"1", "3", "2"}, true},
+		{[]string{"1", "2", "3"}, []string{"1", "3"}, false},
+		{[]string{}, []string{}, true},
+	}
+
+	for _, v := range seeds {
+		result := IsStringArrEquals(v.a, v.b, false)
+		if result != v.expect {
+			t.Error(v.a, v.b, v.expect, result)
+			t.Fatalf("failed !")
+		}
+	}
+
+	t.Log("passed !")
+}
+
 func TestIsL2ArrayEquals(t *testing.T) {
 	seeds := []struct {
 		a      [][]int
@@ -31,6 +53,8 @@ func TestIsL2ArrayEquals(t *testing.T) {
 		order  bool
 		expect bool
 	}{
+		{[][]int{}, [][]int{}, false, true},
+		{[][]int{{4}}, [][]int{{1, 2, 3}, {4}}, false, false},
 		{[][]int{{1, 2, 3}, {4}}, [][]int{{1, 3, 2}, {4}}, true, false},
 		{[][]int{{1, 2, 3}, {4}}, [][]int{{1, 3, 2}, {4}}, false, true},
 		{[][]int{{1, 3}, {4}}, [][]int{{1, 2, 3}, {4}}, false, false},

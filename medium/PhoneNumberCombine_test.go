@@ -6,10 +6,10 @@ import (
 )
 
 func TestLettersCombination(t *testing.T) {
-	seeds := []struct{
-		input string
+	seeds := []struct {
+		input  string
 		expect []string
-	} {
+	}{
 		{"3", []string{"d", "e", "f"}},
 		{"32", []string{"da", "db", "dc", "ea", "eb", "ec", "fa", "fb", "fc"}},
 	}
