@@ -18,7 +18,7 @@ func TestMergeSortedLinklist(t *testing.T) {
 	for _, v := range seeds {
 		la := tools.BuildLinklist(v.a)
 		lb := tools.BuildLinklist(v.b)
-		r := mergeTwoLists(la, lb)
+		r := MergeTwoLists(la, lb)
 		result := tools.LoopLinklist(r)
 		if !tools.IsIntArrEquals(result, v.expect, true) {
 			t.Error(v.a, v.b, v.expect, result)
