@@ -1,29 +1,46 @@
 package hard
 
 import (
-	"github.com/aaronzjc/leetcode/easy"
 	"github.com/aaronzjc/leetcode/tools"
 )
 
 // https://leetcode-cn.com/problems/merge-k-sorted-lists/
 
-func MergeKLists(lists []*tools.ListNode) *tools.ListNode {
-	if len(lists) == 0 {
-		return nil
-	}
-	if len(lists) == 1 {
-		return lists[0]
-	}
-	var first, next *tools.ListNode
-	i := 0
-	for i < len(lists)-1 {
-		if i == 0 {
-			first = lists[i]
+func mergeKLists(lists []*tools.ListNode) (rs *tools.ListNode) {
+	var nodes []*tools.ListNode
+	var i int
+	for _, l := range lists {
+		i = 0
+		for l != nil {
+			i = tools.BinarySearchWithRange(i, len(nodes), func(i int) bool {
+				return nodes[i].Val > l.Val
+			})
+			if i == len(nodes) || len(nodes) == 0 {
+				nodes = append(nodes, &tools.ListNode{
+					Val:  l.Val,
+					Next: nil,
+				})
+			} else {
+				nodes = append(nodes, nil)
+				copy(nodes[i+1:], nodes[i:])
+				nodes[i] = &tools.ListNode{
+					Val:  l.Val,
+					Next: nil,
+				}
+			}
+			l = l.Next
 		}
-		next = lists[i+1]
-		first = easy.MergeTwoLists(first, next)
-		i++
 	}
 
-	return first
+	for k := 0; k < len(nodes); k++ {
+		if k == 0 {
+			rs = nodes[k]
+		}
+		if k == len(nodes)-1 {
+			continue
+		}
+		nodes[k].Next = nodes[k+1]
+	}
+
+	return
 }
