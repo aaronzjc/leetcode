@@ -1,3 +1,5 @@
+![测试结果](https://github.com/aaronzjc/leetcode/workflows/tests/badge.svg)
+
 ## leetcode
 
 啥也别说了，刷。。。
