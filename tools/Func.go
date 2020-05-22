@@ -112,17 +112,3 @@ func IsL2IntArrayEquals(a [][]int, b [][]int, order bool) bool {
 	}
 	return IsStringArrEquals(flatA, flatB, order)
 }
-
-// 二分查找，带范围。没有严格检查输入，内部用，无碍。
-func BinarySearchWithRange(start int, end int, f func(int) bool) int {
-	i, j := start, end
-	for i < j {
-		h := int(uint(i+j) >> 1)
-		if !f(h) {
-			i = h + 1
-		} else {
-			j = h
-		}
-	}
-	return i
-}
