@@ -10,6 +10,10 @@ func TestValidParenthese(t *testing.T) {
 		{"()()()({[]})[", false},
 		{"([({})])", true},
 		{"[[[", false},
+		{")))", false},
+		{"((]", false},
+		{"[[))", false},
+		{"(}}", false},
 	}
 
 	for _, v := range seeds {
