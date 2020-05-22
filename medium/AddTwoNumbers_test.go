@@ -2,46 +2,31 @@ package medium
 
 import (
 	"github.com/aaronzjc/leetcode/tools"
-	"reflect"
 	"testing"
 )
 
-func genList(s []int) *tools.ListNode {
-	var l, r *tools.ListNode
-	for _, v := range s {
-		tmp := &tools.ListNode{
-			Val:  v,
-			Next: nil,
-		}
-		if l == nil {
-			l = tmp
-			r = tmp
-			continue
-		}
-		l.Next = tmp
-		l = l.Next
-	}
-	return r
-}
-
-func travel(s *tools.ListNode) (res []int) {
-	for s != nil {
-		res = append(res, s.Val)
-		s = s.Next
-	}
-	return
-}
-
 func TestAddTwoNumbers(t *testing.T) {
-	g1 := genList([]int{2, 4, 3})
-	g2 := genList([]int{5, 6, 4})
-	expect := []int{7, 0, 8}
-
-	// exec
-	result := travel(addTwoNumbers(g1, g2))
-
-	if !reflect.DeepEqual(result, expect) {
-		t.Fatalf("failed !")
+	seeds := []struct {
+		input1 []int
+		input2 []int
+		expect []int
+	}{
+		{[]int{2, 4, 3}, []int{5, 6, 4}, []int{7, 0, 8}},
+		{[]int{1, 2, 3}, []int{4, 5}, []int{5, 7, 3}},
+		{[]int{2, 3}, []int{8, 7}, []int{0, 1, 1}},
+		{[]int{}, []int{1, 2, 3}, []int{1, 2, 3}},
 	}
+
+	for _, v := range seeds {
+		l1 := tools.BuildLinklist(v.input1)
+		l2 := tools.BuildLinklist(v.input2)
+		r1 := addTwoNumbers(l1, l2)
+		result := tools.LoopLinklist(r1)
+		if !tools.IsIntArrEquals(result, v.expect, true) {
+			t.Error(v.input1, v.input2, result, v.expect)
+			t.Fatalf("failed !")
+		}
+	}
+
 	t.Log("AddTwo passed")
 }

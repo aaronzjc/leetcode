@@ -2,6 +2,7 @@ package hard
 
 import (
 	"github.com/aaronzjc/leetcode/tools"
+	"sort"
 )
 
 // https://leetcode-cn.com/problems/merge-k-sorted-lists/
@@ -12,7 +13,7 @@ func mergeKLists(lists []*tools.ListNode) (rs *tools.ListNode) {
 	for _, l := range lists {
 		i = 0
 		for l != nil {
-			i = tools.BinarySearchWithRange(i, len(nodes), func(i int) bool {
+			i = sort.Search(len(nodes), func(i int) bool {
 				return nodes[i].Val > l.Val
 			})
 			if i == len(nodes) || len(nodes) == 0 {

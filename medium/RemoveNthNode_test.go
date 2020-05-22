@@ -11,8 +11,9 @@ func TestRemoveNthNode(t *testing.T) {
 		idx    int
 		expect []int
 	}{
-		// {[]int{1,2,3,4,5,6,7},2,[]int{1,2,3,4,5,7}},
 		{[]int{1, 2, 3, 4, 5, 6, 7}, 7, []int{2, 3, 4, 5, 6, 7}},
+		{[]int{1, 2, 3, 4, 5, 6, 7}, 1, []int{1, 2, 3, 4, 5, 6}},
+		{[]int{1, 2, 3, 4, 5, 6, 7}, 0, []int{1, 2, 3, 4, 5, 6, 7}},
 	}
 
 	for _, v := range seeds {

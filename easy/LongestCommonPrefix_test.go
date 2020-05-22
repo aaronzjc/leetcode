@@ -10,6 +10,7 @@ func TestLongestCommonPrefix(t *testing.T) {
 		{[]string{"flower", "flow", "flight"}, "fl"},
 		{[]string{"abcd", "def"}, ""},
 		{[]string{}, ""},
+		{[]string{"abc", ""}, ""},
 		{[]string{"c", "c"}, "c"},
 	}
 

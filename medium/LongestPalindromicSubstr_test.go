@@ -3,13 +3,23 @@ package medium
 import "testing"
 
 func TestLongestPalindromic(t *testing.T) {
-	input := "cbbd"
-	expect := "bb"
+	seeds := []struct {
+		input  string
+		expect string
+	}{
+		{"cbbd", "bb"},
+		{"abbadeffedgg", "deffed"},
+		{"abccea", "cc"},
+		{"a", "a"},
+		{"aa", "aa"},
+	}
 
-	result := longestPalindrome(input)
-
-	if result != expect {
-		t.Fatalf("failed !")
+	for _, v := range seeds {
+		result := longestPalindrome(v.input)
+		if result != v.expect {
+			t.Error(v.input, result, v.expect)
+			t.Fatalf("failed !")
+		}
 	}
 
 	t.Log("LongestPalindromic Passed !")

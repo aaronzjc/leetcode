@@ -1,19 +1,28 @@
 package easy
 
 import (
-	"reflect"
+	"github.com/aaronzjc/leetcode/tools"
 	"testing"
 )
 
 func TestSumTwo(t *testing.T) {
-	nums := []int{2, 7, 11, 15}
-	target := 9
-	expect := []int{0, 1}
-
-	result := twoSum(nums, target)
-
-	if !reflect.DeepEqual(result, expect) {
-		t.Fatalf("failed !")
+	seeds := []struct {
+		input  []int
+		target int
+		expect []int
+	}{
+		{[]int{2, 7, 11, 15}, 9, []int{0, 1}},
+		{[]int{2, 7, 11, 15}, 17, []int{0, 3}},
+		{[]int{2, 7, 11, 15}, 100, []int{}},
 	}
+
+	for _, v := range seeds {
+		result := twoSum(v.input, v.target)
+		if !tools.IsIntArrEquals(result, v.expect, false) {
+			t.Error(v.input, v.target, result, v.expect)
+			t.Fatalf("failed !")
+		}
+	}
+
 	t.Log("SumTwo passed")
 }

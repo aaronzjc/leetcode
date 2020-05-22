@@ -6,6 +6,9 @@ import "github.com/aaronzjc/leetcode/tools"
 
 func removeNthFromEnd(head *tools.ListNode, n int) *tools.ListNode {
 	var p, pre *tools.ListNode
+	if n == 0 {
+		return head
+	}
 	p = head
 	var i int
 	for {
