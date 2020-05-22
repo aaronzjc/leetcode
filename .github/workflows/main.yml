@@ -1,0 +1,17 @@
+name: test solutions
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+    
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-go@v2.0.3
+      with: 
+        go-version: '^1.13.1'
+    - run: go test -cover ./...
