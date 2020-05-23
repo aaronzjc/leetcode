@@ -6,13 +6,15 @@ import (
 )
 
 func TestSwapPairs(t *testing.T) {
-	seeds := []struct{
-		input []int
+	seeds := []struct {
+		input  []int
 		expect []int
-	} {
-		{[]int{1,2,3,4,5,6}, []int{2,1,4,3,6,5}},
-		//{[]int{}, []int{}},
-		//{[]int{1}, []int{1}},
+	}{
+		{[]int{}, []int{}},
+		{[]int{1}, []int{1}},
+		{[]int{1, 2}, []int{2, 1}},
+		{[]int{1, 2, 3}, []int{2, 1, 3}},
+		{[]int{1, 2, 3, 4, 5, 6}, []int{2, 1, 4, 3, 6, 5}},
 	}
 
 	for _, v := range seeds {
