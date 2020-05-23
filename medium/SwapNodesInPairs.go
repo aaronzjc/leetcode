@@ -8,7 +8,7 @@ import (
 
 // Tips: 思路是不管细节，先写出核心的交换逻辑，也就是29-31行。然后，再处理边界问题，再处理链接问题。
 
-func SwapPairs(head *tools.ListNode) (rs *tools.ListNode) {
+func swapPairs(head *tools.ListNode) (rs *tools.ListNode) {
 	if head == nil {
 		return
 	}
