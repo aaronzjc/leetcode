@@ -33,6 +33,7 @@ make test_profile_html // 测试覆盖率html查看
 + 合并两个链表
 + 删除排序数组重复项
 + 移除数组元素
++ strstr
 
 ### 中等
 
