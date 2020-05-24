@@ -50,3 +50,53 @@ func TestBuildLinklist(t *testing.T) {
 
 	t.Log("BuildLinklist passed !")
 }
+
+func TestReverseLinklist(t *testing.T) {
+	seeds := []struct {
+		input  []int
+		expect []int
+	}{
+		{[]int{}, []int{}},
+		{[]int{1}, []int{1}},
+		{[]int{1, 2}, []int{2, 1}},
+		{[]int{1, 2, 3}, []int{3, 2, 1}},
+	}
+
+	for _, v := range seeds {
+		l := BuildLinklist(v.input)
+		r, _ := ReverseLinklist(l)
+		result := LoopLinklist(r)
+		if !IsIntArrEquals(result, v.expect, true) {
+			t.Error(v.input, result, v.expect)
+			t.Fatalf("failed !")
+		}
+	}
+
+	t.Log("ReverseLinklist passed !")
+}
+
+func TestCheckLinklist(t *testing.T) {
+	seeds := []struct {
+		input    []int
+		expNum   int
+		expFirst int
+		expLast  int
+	}{
+		{[]int{}, 0, -1, -1},
+		{[]int{1}, 1, 1, 1},
+		{[]int{1, 2}, 2, 1, 2},
+	}
+
+	for _, v := range seeds {
+		l := BuildLinklist(v.input)
+		result, first, last := CheckLinklist(l)
+		if result != v.expNum &&
+			((first == nil && v.expFirst == -1) || (first != nil && v.expFirst == first.Val)) &&
+			((last == nil && v.expLast == -1) || (last != nil && v.expLast == last.Val)) {
+			t.Error(v, result, first, last)
+			t.Fatalf("failed !")
+		}
+	}
+
+	t.Log("CheckLinklist passed !")
+}
