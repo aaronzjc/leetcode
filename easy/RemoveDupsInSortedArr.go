@@ -2,7 +2,7 @@ package easy
 
 // https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/
 
-// Tips: 很简单。注意怎么删除重复元素。
+// Tips: 快慢指针
 
 func removeDuplicates(nums []int) int {
 	l := len(nums)
