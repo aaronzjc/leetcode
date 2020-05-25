@@ -1,5 +1,6 @@
 ![测试结果](https://github.com/aaronzjc/leetcode/workflows/tests/badge.svg)
 [![codecov](https://codecov.io/gh/aaronzjc/leetcode/branch/master/graph/badge.svg?token=U97K2S543N)](https://codecov.io/gh/aaronzjc/leetcode)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/1e452326595b49c2a3f1ff769fae33e8)](https://www.codacy.com/manual/415397228/leetcode?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=aaronzjc/leetcode&amp;utm_campaign=Badge_Grade)
 
 ## 介绍
 
