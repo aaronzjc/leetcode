@@ -19,3 +19,4 @@ jobs:
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         file: ./coverage.out
+        name: codecov_robot
