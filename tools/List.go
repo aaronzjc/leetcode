@@ -5,7 +5,7 @@ type ListNode struct {
 	Next *ListNode
 }
 
-// 生成单链表
+// BuildLinklist 生成单链表
 func BuildLinklist(data []int) (res *ListNode) {
 	var p *ListNode
 	for k, v := range data {
@@ -24,7 +24,7 @@ func BuildLinklist(data []int) (res *ListNode) {
 	return
 }
 
-// 遍历单链表
+// LoopLinklist 遍历单链表
 func LoopLinklist(node *ListNode) (res []int) {
 	for node != nil {
 		res = append(res, node.Val)
@@ -33,7 +33,7 @@ func LoopLinklist(node *ListNode) (res []int) {
 	return
 }
 
-// 反转单链表
+// ReverseLinklist 反转单链表
 func ReverseLinklist(node *ListNode) (start *ListNode, end *ListNode) {
 	var pre, tmp *ListNode
 	if node == nil {

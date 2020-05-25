@@ -6,6 +6,7 @@ import (
 	"sort"
 )
 
+// 比较两个整形数组是否相等
 func IsIntArrEquals(a []int, b []int, order bool) bool {
 	if len(a)+len(b) == 0 {
 		return true
@@ -17,6 +18,7 @@ func IsIntArrEquals(a []int, b []int, order bool) bool {
 	return reflect.DeepEqual(a, b)
 }
 
+// 比较两个字符串数组是否相等
 func IsStringArrEquals(a []string, b []string, order bool) bool {
 	if len(a)+len(b) == 0 {
 		return true

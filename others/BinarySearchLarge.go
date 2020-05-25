@@ -1,5 +1,6 @@
 package others
 
+// 二分查找比给定值大的元素
 func BinarySearchLarge(nums []int, e int) (res int) {
 	low := 0
 	high := len(nums) - 1
