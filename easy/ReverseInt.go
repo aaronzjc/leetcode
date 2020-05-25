@@ -4,9 +4,9 @@ package easy
 
 import "math"
 
-// 最大整数
+// IntMax 最大整数
 const IntMax = 1<<31 - 1
-// 最小整数
+// IntMin 最小整数
 const IntMin = ^IntMax
 
 func reverse(x int) int {
