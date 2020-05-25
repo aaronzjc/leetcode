@@ -1,12 +1,12 @@
 package tools
 
-// 树
+// Tree 树
 type Tree struct {
 	Length int
 	Root   *TreeNode
 }
 
-// 树节点
+// TreeNode 树节点
 type TreeNode struct {
 	Val      int
 	Children []*TreeNode

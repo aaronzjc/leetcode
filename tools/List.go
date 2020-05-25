@@ -1,5 +1,6 @@
 package tools
 
+// ListNode 链表节点
 type ListNode struct {
 	Val  int
 	Next *ListNode
@@ -54,7 +55,7 @@ func ReverseLinklist(node *ListNode) (start *ListNode, end *ListNode) {
 	return
 }
 
-// 输出链表长度
+// CheckLinklist 输出链表长度
 func CheckLinklist(node *ListNode) (num int, first *ListNode, last *ListNode) {
 	first = node
 	last = node
