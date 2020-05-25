@@ -2,7 +2,7 @@ package easy
 
 import "github.com/aaronzjc/leetcode/tools"
 
-func MergeTwoLists(l1 *tools.ListNode, l2 *tools.ListNode) (r *tools.ListNode) {
+func mergeTwoLists(l1 *tools.ListNode, l2 *tools.ListNode) (r *tools.ListNode) {
 	var rs *tools.ListNode
 	for l1 != nil || l2 != nil {
 		if rs == nil {
