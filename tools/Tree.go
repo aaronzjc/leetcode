@@ -1,15 +1,18 @@
 package tools
 
+// Tree 树
 type Tree struct {
 	Length int
 	Root   *TreeNode
 }
 
+// TreeNode 树节点
 type TreeNode struct {
 	Val      int
 	Children []*TreeNode
 }
 
+// BuildTreeFromArr 根据数组生成树
 func BuildTreeFromArr(data map[int][]int, keys []int) (tr *Tree) {
 	var ok bool
 	var node *TreeNode
@@ -42,7 +45,7 @@ func BuildTreeFromArr(data map[int][]int, keys []int) (tr *Tree) {
 	return
 }
 
-// DFS
+// DFSTravel 深度优先遍历非递归
 func DFSTravel(t *Tree) (res []int) {
 	var l []*TreeNode
 	l = append(l, t.Root)
@@ -60,7 +63,7 @@ func DFSTravel(t *Tree) (res []int) {
 	return
 }
 
-// DFS递归版本
+// DFSRecurseTravel 深度优先遍历递归
 func DFSRecurseTravel(t *Tree) (res []int) {
 	var travel func(node *TreeNode, collect *[]int)
 	travel = func(node *TreeNode, collec *[]int) {
@@ -77,7 +80,7 @@ func DFSRecurseTravel(t *Tree) (res []int) {
 	return
 }
 
-// BFS
+// BFSTravel 广度优先遍历
 func BFSTravel(t *Tree) (res []int) {
 	var l []*TreeNode
 	l = append(l, t.Root)
