@@ -33,9 +33,9 @@ func divide(dividend int, divisor int) (res int) {
 	if (divisor == 1 || divisor == -1) && (dividend > math.MaxInt32 || dividend < ^math.MaxInt32) {
 		if negtive {
 			return ^math.MaxInt32
-		} else {
-			return math.MaxInt32
 		}
+
+		return math.MaxInt32
 	}
 	var div func(int, int, int) int
 	div = func(num int, d int, res int) int {
