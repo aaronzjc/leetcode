@@ -115,3 +115,33 @@ func IsL2IntArrayEquals(a [][]int, b [][]int, order bool) bool {
 	}
 	return IsStringArrEquals(flatA, flatB, order)
 }
+
+// Permutation 单词的全排列
+func Permutation(words []string) []string {
+	ls := []string{}
+	var per func([]string, string)
+	per = func(words []string, res string) {
+		if len(words) == 0 {
+			return
+		}
+		if len(words) == 1 {
+			ls = append(ls, res+words[0])
+			return
+		}
+
+		for i := 0; i < len(words); i++ {
+			tmp := []string{}
+			if i > 0 {
+				tmp = append(tmp, words[:i]...)
+			}
+			if i < len(words)-1 {
+				tmp = append(tmp, words[i+1:]...)
+			}
+			per(tmp, res+words[i])
+		}
+	}
+
+	per(words, "")
+
+	return ls
+}

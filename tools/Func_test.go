@@ -69,3 +69,25 @@ func TestIsL2ArrayEquals(t *testing.T) {
 	}
 	t.Log("passed !")
 }
+
+func TestPermutation(t *testing.T) {
+	seeds := []struct {
+		input  []string
+		expect []string
+	}{
+		{[]string{"hello", "world"}, []string{"helloworld", "worldhello"}},
+		{[]string{"a", "b", "c"}, []string{"abc", "acb", "bac", "bca", "cab", "cba"}},
+		{[]string{"hello"}, []string{"hello"}},
+		{[]string{}, []string{}},
+	}
+
+	for _, v := range seeds {
+		result := Permutation(v.input)
+		if !IsStringArrEquals(v.expect, result, false) {
+			t.Error(v, result)
+			t.Fatalf("failed !")
+		}
+	}
+
+	t.Log("Permutation passed")
+}

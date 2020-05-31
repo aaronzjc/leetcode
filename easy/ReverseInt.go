@@ -6,6 +6,7 @@ import "math"
 
 // IntMax 最大整数
 const IntMax = 1<<31 - 1
+
 // IntMin 最小整数
 const IntMin = ^IntMax
 
