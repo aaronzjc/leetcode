@@ -116,6 +116,26 @@ func IsL2IntArrayEquals(a [][]int, b [][]int, order bool) bool {
 	return IsStringArrEquals(flatA, flatB, order)
 }
 
+// IsL2ByteArrayEquals 比较两个二维字节数组是否相等
+func IsL2ByteArrayEquals(aByte [][]byte, bByte [][]byte, order bool) bool {
+	var aInt, bInt [][]int
+	aInt = make([][]int, len(aByte))
+	for i := 0; i < len(aByte); i++ {
+		aInt[i] = make([]int, len(aByte[i]))
+		for j := 0; j < len(aByte[i]); j++ {
+			aInt[i][j] = int(aByte[i][j])
+		}
+	}
+	bInt = make([][]int, len(bByte))
+	for i := 0; i < len(bByte); i++ {
+		bInt[i] = make([]int, len(bByte[i]))
+		for j := 0; j < len(bByte[i]); j++ {
+			bInt[i][j] = int(bByte[i][j])
+		}
+	}
+	return IsL2IntArrayEquals(aInt, bInt, order)
+}
+
 // Permutation 单词的全排列
 func Permutation(words []string) []string {
 	ls := []string{}
