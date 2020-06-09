@@ -37,6 +37,7 @@ make test_profile_html // 测试覆盖率html查看
 + 移除数组元素
 + strstr
 + 寻找有序数组插入位置
++ 外观数列
 
 ### 中等
 

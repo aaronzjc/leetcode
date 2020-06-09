@@ -31,7 +31,7 @@ func solveSudoku(board [][]byte) {
 
 	var resolve func([][]byte, int, int) bool
 	resolve = func(board [][]byte, i int, j int) bool {
-		ii := i + j / 9
+		ii := i + j/9
 		jj := j % 9
 		for ; ii < 9; ii++ {
 			for ; jj < 9; jj++ {
