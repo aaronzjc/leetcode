@@ -6,31 +6,39 @@ import (
 	"github.com/aaronzjc/leetcode/tools"
 )
 
-func TestCombinationSum(t *testing.T) {
+func TestCombinationSumTwo(t *testing.T) {
 	seeds := []struct {
 		input  []int
 		target int
 		expect [][]int
 	}{
 		{
-			[]int{2, 3, 6, 7},
-			7,
-			[][]int{{7}, {2, 2, 3}},
+			[]int{10, 1, 2, 7, 6, 1, 5},
+			8,
+			[][]int{
+				{1, 7},
+				{1, 2, 5},
+				{2, 6},
+				{1, 1, 6},
+			},
 		},
 		{
-			[]int{2, 3, 5},
-			8,
-			[][]int{{2, 2, 2, 2}, {2, 3, 3}, {3, 5}},
+			[]int{2, 5, 2, 1, 2},
+			5,
+			[][]int{
+				{1, 2, 2},
+				{5},
+			},
 		},
 	}
 
 	for _, v := range seeds {
-		result := combinationSum(v.input, v.target)
+		result := combinationSum2(v.input, v.target)
 		if !tools.IsL2IntArrayEquals(result, v.expect, false) {
 			t.Error(v, result)
 			t.Fatalf("failed !")
 		}
 	}
 
-	t.Log("CombinationSum passed !")
+	t.Log("CombinationSumTwo passed !")
 }
