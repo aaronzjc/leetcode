@@ -18,7 +18,7 @@ func TestDivideZero(t *testing.T) {
 func TestDivideTwoInts(t *testing.T) {
 	defer func() {
 		if r := recover(); r == nil {
-
+			t.Log("none recover emitted !")
 		}
 	}()
 	seeds := []struct {
