@@ -1,8 +1,9 @@
 package hard
 
 import (
-	"github.com/aaronzjc/leetcode/tools"
 	"sort"
+
+	"github.com/aaronzjc/leetcode/tools"
 )
 
 // https://leetcode-cn.com/problems/merge-k-sorted-lists/
