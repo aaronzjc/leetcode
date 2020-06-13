@@ -1,8 +1,9 @@
 package hard
 
 import (
-	"github.com/aaronzjc/leetcode/tools"
 	"testing"
+
+	"github.com/aaronzjc/leetcode/tools"
 )
 
 func TestSudokuResolve(t *testing.T) {
