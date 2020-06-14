@@ -44,14 +44,13 @@ func isMatch(s string, p string) bool {
 						return true
 					}
 				}
-				return false
 			} else {
 				if pattern[i] == '?' || pattern[i] == str[i] {
 					i++
 					continue
 				}
-				return false
 			}
+			return false
 		}
 		if i > 0 && i == lp && i == ls {
 			return true
