@@ -3,63 +3,26 @@ package hard
 // https://leetcode-cn.com/problems/wildcard-matching/
 
 func isMatch(s string, p string) bool {
-	var pre byte
-	var ps []byte
-	for i := 0; i < len(p); i++ {
-		if p[i] == pre && p[i] == '*' {
-			continue
-		}
-		ps = append(ps, p[i])
-		pre = p[i]
+	dp := make([][]bool, len(s)+1)
+	for i := range dp {
+		dp[i] = make([]bool, len(p)+1)
 	}
 
-	var checkStr func(string, []byte) bool
-	checkStr = func(str string, pattern []byte) bool {
-		ls, lp := len(str), len(pattern)
-		if str == string(pattern) {
-			return true
-		}
-		if lp > 1 {
-			if pattern[lp-1] != '*' {
-				if pattern[lp-1] != '?' && pattern[lp-1] != str[ls-1] {
-					return false
-				}
-			}
-		}
-		var i int
-		for i < ls && i < lp {
-			if pattern[i] == '*' {
-				if i == lp-1 {
-					return true
-				}
-				var pl int
-				for i := 0; i < lp; i++ {
-					if pattern[i] != '*' {
-						pl++
-					}
-				}
-				for j := 0; j <= ls-pl; j++ {
-					match := checkStr(string(str[i+j:]), pattern[i+1:])
-					if match {
-						return true
-					}
-				}
+	dp[0][0] = true
+	for i := 1; i <= len(p); i++ {
+		dp[0][i] = dp[0][i-1] && p[i-1] == '*'
+	}
+
+	for i := 0; i < len(s); i++ {
+		for j := 0; j < len(p); j++ {
+			if p[j] == '*' {
+				dp[i+1][j+1] = dp[i][j+1] || dp[i+1][j]
 			} else {
-				if pattern[i] == '?' || pattern[i] == str[i] {
-					i++
-					continue
+				if s[i] == p[j] || p[j] == '?' {
+					dp[i+1][j+1] = dp[i][j]
 				}
 			}
-			return false
 		}
-		if i > 0 && i == lp && i == ls {
-			return true
-		}
-		if len(pattern[i:]) == 1 && pattern[i] == '*' {
-			return true
-		}
-		return false
 	}
-
-	return checkStr(s, ps)
+	return dp[len(s)][len(p)]
 }
