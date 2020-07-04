@@ -142,10 +142,9 @@ func Permutation(words []string) []string {
 	var per func([]string, string)
 	per = func(words []string, res string) {
 		if len(words) == 0 {
-			return
-		}
-		if len(words) == 1 {
-			ls = append(ls, res+words[0])
+			if res != "" {
+				ls = append(ls, res)
+			}
 			return
 		}
 
