@@ -136,6 +136,31 @@ func IsL2ByteArrayEquals(aByte [][]byte, bByte [][]byte, order bool) bool {
 	return IsL2IntArrayEquals(aInt, bInt, order)
 }
 
+// IsL2StrArrayEquals 比较两个二维字符串数组是否相等
+func IsL2StrArrayEquals(aStr [][]string, bStr [][]string, order bool) bool {
+	var flatA, flatB []string
+	var i int
+	for i < len(aStr) || i < len(bStr) {
+		if i < len(aStr) {
+			if !order {
+				sort.Strings(aStr[i])
+			}
+			bs, _ := json.Marshal(aStr[i])
+			flatA = append(flatA, string(bs))
+		}
+		if i < len(bStr) {
+			if !order {
+				sort.Strings(bStr[i])
+			}
+			bs, _ := json.Marshal(bStr[i])
+			flatB = append(flatB, string(bs))
+		}
+		i++
+	}
+
+	return IsStringArrEquals(flatA, flatB, order)
+}
+
 // Permutation 单词的全排列
 func Permutation(words []string) []string {
 	ls := []string{}

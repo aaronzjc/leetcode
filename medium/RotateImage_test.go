@@ -7,20 +7,20 @@ import (
 )
 
 func TestRotateImage(t *testing.T) {
-	seeds := []struct{
-		input [][]int
+	seeds := []struct {
+		input  [][]int
 		expect [][]int
-	} {
+	}{
 		{
 			[][]int{
-				{1,2,3},
-				{4,5,6},
-				{7,8,9},
+				{1, 2, 3},
+				{4, 5, 6},
+				{7, 8, 9},
 			},
 			[][]int{
-				{7,4,1},
-				{8,5,2},
-				{9,6,3},
+				{7, 4, 1},
+				{8, 5, 2},
+				{9, 6, 3},
 			},
 		},
 	}

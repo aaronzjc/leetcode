@@ -70,6 +70,30 @@ func TestIsL2ArrayEquals(t *testing.T) {
 	t.Log("passed !")
 }
 
+func TestIsL2StrArrayEquals(t *testing.T) {
+	seeds := []struct {
+		a      [][]string
+		b      [][]string
+		order  bool
+		expect bool
+	}{
+		{[][]string{}, [][]string{}, false, true},
+		{[][]string{{"abc"}}, [][]string{{"abc", "abc"}, {"abc"}}, false, false},
+		{[][]string{{"abc", "def", "gh"}, {"a"}}, [][]string{{"abc", "gh", "def"}, {"a"}}, true, false},
+		{[][]string{{"abc", "def", "gh"}, {"a"}}, [][]string{{"abc", "gh", "def"}, {"a"}}, false, true},
+		{[][]string{{"abc", "gh"}, {"a"}}, [][]string{{"abc", "gh", "def"}, {"a"}}, false, false},
+	}
+
+	for _, v := range seeds {
+		result := IsL2StrArrayEquals(v.a, v.b, v.order)
+		if result != v.expect {
+			t.Error(v.a, v.b, v.expect, result)
+			t.Fatalf("failed !")
+		}
+	}
+	t.Log("passed !")
+}
+
 func TestIsL2ByteArrayEquals(t *testing.T) {
 	seeds := []struct {
 		a      [][]byte
