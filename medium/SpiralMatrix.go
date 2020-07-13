@@ -13,20 +13,20 @@ func spiralOrder(matrix [][]int) (res []int) {
 
 	var walk func(int, int, int, int)
 	walk = func(x int, y int, m int, n int) {
-		// (0,0) -> (0,m)
+		// (0,0) -> (m, 0)
 		res = append(res, matrix[x][y:y+m]...)
 
-		// (0, m) -> (n, m)
+		// (m, 0) -> (m, n)
 		for i := 1; i < n; i++ {
 			res = append(res, matrix[x+i][y+m-1])
 		}
-		// (n,m) -> (n,0)
+		// (m, n) -> (0, n)
 		if n > 1 {
 			for i := m - 2; i >= 0; i-- {
 				res = append(res, matrix[x+n-1][y+i])
 			}
 		}
-		// (n,m) -> (0,0)
+		// (0, n) -> (0,0)
 		if m > 1 {
 			for i := n - 2; i > 0; i-- {
 				res = append(res, matrix[x+i][y])
