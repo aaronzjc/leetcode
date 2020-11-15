@@ -30,7 +30,7 @@ func getPermutation(n int, k int) (res string) {
 			copy(tmp, cc)
 			copy(tmp[k:], tmp[k+1:])
 			tmp = tmp[:len(tmp)-1]
-			permute(tmp, str + strconv.Itoa(v))
+			permute(tmp, str+strconv.Itoa(v))
 		}
 	}
 	var cc []int

@@ -2,12 +2,12 @@ package medium
 
 import "testing"
 
-func TestGetPermutationK(t *testing.T)  {
-	cases := []struct{
-		n int
-		k int
+func TestGetPermutationK(t *testing.T) {
+	cases := []struct {
+		n      int
+		k      int
 		expect string
-	} {
+	}{
 		{3, 3, "213"},
 		{8, 13122, "36247851"},
 	}

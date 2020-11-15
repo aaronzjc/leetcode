@@ -3,13 +3,14 @@ package medium
 import "testing"
 
 func TestUniquePaths(t *testing.T) {
-	seeds := []struct{
-		m int
-		n int
+	seeds := []struct {
+		m      int
+		n      int
 		expect int
-	} {
+	}{
 		{7, 3, 28},
 		{3, 2, 3},
+		{4, 4, 20},
 	}
 
 	for _, v := range seeds {

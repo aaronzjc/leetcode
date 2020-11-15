@@ -20,7 +20,8 @@ func uniquePaths(m int, n int) int {
 		}
 		var x, y, p1, p2 int
 		var key string
-		x = mm - 1; y = nn
+		x = mm - 1
+		y = nn
 		if x >= 1 && y >= 1 {
 			key = strconv.Itoa(x) + "_" + strconv.Itoa(y)
 			if v, ok := dp[key]; ok {
@@ -30,15 +31,13 @@ func uniquePaths(m int, n int) int {
 				dp[key] = p1
 			}
 		}
-		x = mm; y = nn - 1
+		x = mm
+		y = nn - 1
 		if x >= 1 && y >= 1 {
 			key = strconv.Itoa(x) + "_" + strconv.Itoa(y)
-			if v, ok := dp[key]; ok {
-				p2 = v
-			} else {
-				p2 = calArea(x, y)
-				dp[key] = p2
-			}
+			// 这一步理论上和上面是一样的，但是从测试反馈来看，是不会走的。仔细分析确实如此。因为我们是从下面开始计算的。所以，永远不会先计算上半部分
+			p2 = calArea(x, y)
+			dp[key] = p2
 		}
 		return p1 + p2
 	}

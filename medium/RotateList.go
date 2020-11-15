@@ -28,11 +28,11 @@ func rotateRight(head *tools.ListNode, k int) (res *tools.ListNode) {
 		return s
 	}
 
-	for i := 1; i < length - k; i++ {
-		l = l.Next		
+	for i := 1; i < length-k; i++ {
+		l = l.Next
 	}
 	res = l.Next
 	l.Next = nil
 	e.Next = s
-	return 	
+	return
 }
