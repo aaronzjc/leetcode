@@ -42,6 +42,7 @@ make test_profile_html // 测试覆盖率html查看
 + 最后一个单词的长度
 + 加一
 + x的平方根
++ 爬楼梯
 
 ### 中等
 
@@ -80,6 +81,7 @@ make test_profile_html // 测试覆盖率html查看
 + 不同路径
 + 不同路径2
 + 最小路径和
++ 简化路径
 
 ### 难 
 
