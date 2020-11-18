@@ -16,12 +16,12 @@ func searchMatrix(matrix [][]int, target int) bool {
 	rows := len(matrix)
 	cols := len(matrix[0])
 
-	left, right := 0, rows * cols - 1
+	left, right := 0, rows*cols-1
 	mid := (left + right) / 2
 
 	for left <= right {
 		y := mid / cols
-		x := mid - y * cols
+		x := mid - y*cols
 
 		if matrix[y][x] == target {
 			return true
