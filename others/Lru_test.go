@@ -53,3 +53,47 @@ func TestLRUCase1(t *testing.T) {
 
 	t.Log("passed !")
 }
+
+func TestLRUCase2(t *testing.T) {
+	var dd string
+	cache1 := NewLRUCache(1)
+
+	type Eg struct {
+		val int
+		e   bool
+	}
+	dumpSeeds := []struct {
+		key  int
+		val  int
+		get  bool
+		set  bool
+		eg   Eg
+		dump string
+	}{
+		{1, 1, false, true, Eg{}, "1"},         // set   1
+		{1, 1, true, false, Eg{1, true}, "1"},  // get   1
+		{2, 2, true, false, Eg{0, false}, "1"}, // get   1
+		{2, 2, false, true, Eg{}, "2"},         // set   2
+		{3, 3, false, true, Eg{}, "3"},         // set   3
+		{3, 3, false, true, Eg{}, "3"},         // set   3
+		{3, 3, true, false, Eg{3, true}, "3"},  // get   3
+	}
+
+	for _, v := range dumpSeeds {
+		if v.get {
+			res, ok := cache1.Get(LRUKey(v.key))
+			if res != LRUVal(v.eg.val) && ok != v.eg.e {
+				t.Fatalf("get key = %v, res = %v, ok = %v, expect = %v", v.key, res, ok, v.eg)
+			}
+		}
+		if v.set {
+			cache1.Set(LRUKey(v.key), LRUVal(v.val))
+		}
+		dd = cache1.Dump()
+		if dd != v.dump {
+			t.Fatalf("dd = %s, expect = %s", dd, v.dump)
+		}
+	}
+
+	t.Log("passed !")
+}
