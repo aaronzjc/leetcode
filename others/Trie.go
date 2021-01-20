@@ -5,38 +5,8 @@ package others
 
 type TrieNode struct {
 	Val rune
-	Children []*TrieNode
-	Ref int
-}
-
-func NewNode(r rune) *TrieNode {
-	return &TrieNode{
-		Val: r,
-	}
-}
-
-func (tn *TrieNode) Add(r rune) bool {
-	// 如果元素存在，不重复添加
-	for _, v := range tn.Children {
-		if v.Val == r {
-			return false
-		}
-	}
-
-	node := &TrieNode{
-		Val: r,
-	}
-	tn.Children = append(tn.Children, node)
-	tn.Ref++
-	return true
-}
-
-func (tn *TrieNode) Del(r rune) bool {
-	for _, v := range tn.Children {
-		if v.Val == r {
-			
-		}
-	}
+	Children map[rune]*TrieNode
+	Flag bool
 }
 
 type Trie struct {
@@ -50,19 +20,61 @@ func NewTrie() *Trie {
 }
 
 func (t *Trie) Insert(word string) bool {
-	if len(word) == 0 {
-		return false
-	}
+	var node *TrieNode
 	w := []rune(word)
-	for _, v := range t.Root.Children {
-		if v.Val == word[]
+	i, lw := 0, len(w)
+	for ; i < lw; i++ {
+		found := false
+		if node == nil {
+			node = t.Root
+		}
+		for k, v := range node.Children {
+			if k == w[i] {
+				node = v
+				found = true
+				break
+			}
+		}
+
+		if !found {
+			node.Children[w[i]] = &TrieNode{
+				Val: w[i],
+			}
+			node = node.Children[w[i]]
+		}
+
+		// 如果找到最后一个元素了，那么设置符号位，表明是一个单词
+		if i == lw - 1 {
+			node.Flag = true
+		}
 	}
+
+	return true
 }
 
-func (t *Trie) Del(word string) {
+func (t *Trie) Search(word string) bool {
+	var node *TrieNode
+	w := []rune(word)
+	i, lw := 0, len(w)
 
-}
+	var found bool
+	for ; i < lw; i++ {
+		if node == nil {
+			node = t.Root
+		}
 
-func (t *Trie) Has(word string) bool {
+		for k, v := range node.Children {
+			if k == w[i] {
+				found = true
+				node = v
+				break
+			}
+		}
 
+		if !found {
+			return false
+		}
+	}
+
+	return node.Flag
 }
