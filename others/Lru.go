@@ -1,7 +1,6 @@
 package others
 
 import (
-	"fmt"
 	"strconv"
 )
 
@@ -73,7 +72,6 @@ func (cache *LRUCache) Get(key LRUKey) (LRUVal, bool) {
 }
 
 func (cache *LRUCache) Dump() string {
-	fmt.Println(cache.hm)
 	node := cache.start
 	res := ""
 	for node != nil {

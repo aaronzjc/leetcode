@@ -1,7 +1,6 @@
 package others
 
 import (
-	"fmt"
 	"testing"
 
 	"github.com/aaronzjc/leetcode/tools"
