@@ -1,6 +1,9 @@
 package others
 
-import "strconv"
+import (
+	"fmt"
+	"strconv"
+)
 
 // Trie - 字典树
 // 字典树常用于高效敏感词查找，路由匹配等
@@ -105,17 +108,18 @@ func (t *Trie) Del(word string) bool {
 	return true
 }
 
-func (t *Trie) Dump() (res []string) {
+func (t *Trie) Dump() []string {
 	var l []*TrieNode
+	var res []string
 	l = append(l, t.Root)
 	for len(l) > 0 {
 		for _, node := range l {
-			res = append(res, string(node.Val)+":"+strconv.Itoa(node.Ref))
+			res = append(res, fmt.Sprintf("%s=%s", string(node.Val), strconv.Itoa(node.Ref)))
 			l = l[1:]
 			for _, child := range node.Children {
 				l = append(l, child)
 			}
 		}
 	}
-	return
+	return res
 }
