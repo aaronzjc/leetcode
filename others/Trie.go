@@ -1,12 +1,15 @@
 package others
 
+import "strconv"
+
 // Trie - 字典树
 // 字典树常用于高效敏感词查找，路由匹配等
 
 type TrieNode struct {
-	Val rune
-	Children map[rune]*TrieNode
-	Flag bool
+	Val      rune
+	Children []*TrieNode
+	Ref      int
+	Flag     bool
 }
 
 type Trie struct {
@@ -20,16 +23,18 @@ func NewTrie() *Trie {
 }
 
 func (t *Trie) Insert(word string) bool {
-	var node *TrieNode
+	if t.Search(word) {
+		return true
+	}
+
 	w := []rune(word)
 	i, lw := 0, len(w)
+	node := t.Root
 	for ; i < lw; i++ {
 		found := false
-		if node == nil {
-			node = t.Root
-		}
-		for k, v := range node.Children {
-			if k == w[i] {
+		for _, v := range node.Children {
+			if v.Val == w[i] {
+				node.Ref++
 				node = v
 				found = true
 				break
@@ -37,34 +42,28 @@ func (t *Trie) Insert(word string) bool {
 		}
 
 		if !found {
-			node.Children[w[i]] = &TrieNode{
+			node.Children = append(node.Children, &TrieNode{
 				Val: w[i],
-			}
-			node = node.Children[w[i]]
-		}
-
-		// 如果找到最后一个元素了，那么设置符号位，表明是一个单词
-		if i == lw - 1 {
-			node.Flag = true
+			})
+			node.Ref++
+			node = node.Children[len(node.Children)-1]
 		}
 	}
+
+	node.Flag = true
 
 	return true
 }
 
 func (t *Trie) Search(word string) bool {
-	var node *TrieNode
 	w := []rune(word)
 	i, lw := 0, len(w)
 
-	var found bool
+	node := t.Root
 	for ; i < lw; i++ {
-		if node == nil {
-			node = t.Root
-		}
-
-		for k, v := range node.Children {
-			if k == w[i] {
+		found := false
+		for _, v := range node.Children {
+			if v.Val == w[i] {
 				found = true
 				node = v
 				break
@@ -77,4 +76,46 @@ func (t *Trie) Search(word string) bool {
 	}
 
 	return node.Flag
+}
+
+func (t *Trie) Del(word string) bool {
+	if t.Search(word) == false {
+		return true
+	}
+	w := []rune(word)
+	i, lw := 0, len(w)
+	node := t.Root
+	for ; i < lw; i++ {
+		for k, v := range node.Children {
+			if v.Val != w[i] {
+				continue
+			}
+			v.Ref--
+			if v.Ref == 0 {
+				node.Children = append(node.Children[:k], node.Children[k+1:]...)
+			}
+			break
+		}
+	}
+
+	if node.Ref > 0 {
+		node.Flag = false
+	}
+
+	return true
+}
+
+func (t *Trie) Dump() (res []string) {
+	var l []*TrieNode
+	l = append(l, t.Root)
+	for len(l) > 0 {
+		for _, node := range l {
+			res = append(res, string(node.Val)+":"+strconv.Itoa(node.Ref))
+			l = l[1:]
+			for _, child := range node.Children {
+				l = append(l, child)
+			}
+		}
+	}
+	return
 }
