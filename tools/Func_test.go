@@ -30,9 +30,10 @@ func TestIsStringArrayEqual(t *testing.T) {
 		b      []string
 		expect bool
 	}{
-		{[]string{"1", "2", "3"}, []string{"1", "3", "2"}, true},
+		{[]string{"=1", "a=2", "3"}, []string{"=1", "3", "a=2"}, true},
 		{[]string{"1", "2", "3"}, []string{"1", "3"}, false},
 		{[]string{}, []string{}, true},
+		{[]string{"=1", "a=0"}, []string{"=1", "a=0"}, true},
 	}
 
 	for _, v := range seeds {

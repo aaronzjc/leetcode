@@ -114,7 +114,7 @@ func (t *Trie) Dump() []string {
 	l = append(l, t.Root)
 	for len(l) > 0 {
 		for _, node := range l {
-			res = append(res, fmt.Sprintf("%s=%s", string(node.Val), strconv.Itoa(node.Ref)))
+			res = append(res, fmt.Sprintf("%s%s", string(node.Val), strconv.Itoa(node.Ref)))
 			l = l[1:]
 			for _, child := range node.Children {
 				l = append(l, child)

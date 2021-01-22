@@ -1,6 +1,7 @@
 package others
 
 import (
+	"fmt"
 	"testing"
 
 	"github.com/aaronzjc/leetcode/tools"
@@ -13,14 +14,14 @@ func TestTrie(t *testing.T) {
 		word   string
 		expect []string
 	}{
-		{"a", []string{"=1", "a=0"}},
-		{"abc", []string{"=2", "a=1", "b=1", "c=0"}},
-		{"abc", []string{"=2", "a=1", "b=1", "c=0"}},
-		{"abd", []string{"=3", "a=2", "b=2", "c=0", "d=0"}},
-		{"acd", []string{"=4", "a=3", "b=2", "c=1", "c=0", "d=0", "d=0"}},
-		{"b", []string{"=5", "a=3", "b=1", "b=2", "c=1", "c=0", "d=0", "d=0"}},
-		{"bc", []string{"=6", "a=3", "b=2", "b=2", "c=1", "c=0", "c=0", "d=0", "d=0"}},
-		{"bcd", []string{"=7", "a=3", "b=2", "b=2", "c=1", "c=0", "c=0", "d=0", "d=0", "d=0"}},
+		{"a", []string{"1", "a0"}},
+		{"abc", []string{"2", "a1", "b1", "c0"}},
+		{"abc", []string{"2", "a1", "b1", "c0"}},
+		{"abd", []string{"3", "a2", "b2", "c0", "d0"}},
+		{"acd", []string{"4", "a3", "b2", "c1", "c0", "d0", "d0"}},
+		{"b", []string{"5", "a3", "b1", "b2", "c1", "c0", "d0", "d0"}},
+		{"bc", []string{"6", "a3", "b2", "b2", "c1", "c0", "c0", "d0", "d0"}},
+		{"bcd", []string{"7", "a3", "b2", "b2", "c1", "c0", "c0", "d0", "d0", "d0"}},
 	}
 
 	for _, w := range inserts {
@@ -28,7 +29,7 @@ func TestTrie(t *testing.T) {
 			t.Error("insert error", w.word)
 		}
 		dp := trie.Dump()
-		if tools.IsStringArrEquals(dp, w.expect, true) == false {
+		if tools.IsStringArrEquals(w.expect, dp, false) == false {
 			t.Error("dump error", "dp =", dp, "expect =", w.expect)
 		}
 	}
