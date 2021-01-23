@@ -9,7 +9,7 @@ import (
 // 字典树常用于高效敏感词查找，路由匹配等
 
 type TrieNode struct {
-	Val      rune
+	Val      byte
 	Children []*TrieNode
 	Ref      int
 	Flag     bool
@@ -21,16 +21,19 @@ type Trie struct {
 
 func NewTrie() *Trie {
 	return &Trie{
-		Root: new(TrieNode),
+		Root: &TrieNode{
+			Val: byte('#'),
+		},
 	}
 }
 
 func (t *Trie) Insert(word string) bool {
+	// 这里牺牲一点点性能先搜索是为了防止重复的字符串插入，导致计数异常
 	if t.Search(word) {
 		return true
 	}
 
-	w := []rune(word)
+	w := []byte(word)
 	i, lw := 0, len(w)
 	node := t.Root
 	for ; i < lw; i++ {
@@ -59,7 +62,7 @@ func (t *Trie) Insert(word string) bool {
 }
 
 func (t *Trie) Search(word string) bool {
-	w := []rune(word)
+	w := []byte(word)
 	i, lw := 0, len(w)
 
 	node := t.Root
@@ -83,26 +86,32 @@ func (t *Trie) Search(word string) bool {
 
 func (t *Trie) Del(word string) bool {
 	if t.Search(word) == false {
-		return true
+		return false
 	}
-	w := []rune(word)
+	w := []byte(word)
 	i, lw := 0, len(w)
 	node := t.Root
+	t.Root.Ref--
 	for ; i < lw; i++ {
 		for k, v := range node.Children {
 			if v.Val != w[i] {
 				continue
 			}
-			v.Ref--
+			// 只有分支才需要减少引用，如果本身是单词节点，不需要减
+			if v.Flag {
+				v.Flag = false
+			} else {
+				v.Ref--
+			}
+
+			// 如果分支的引用为0了，直接削了
 			if v.Ref == 0 {
 				node.Children = append(node.Children[:k], node.Children[k+1:]...)
+				return true
 			}
-			break
-		}
-	}
 
-	if node.Ref > 0 {
-		node.Flag = false
+			node = v
+		}
 	}
 
 	return true
