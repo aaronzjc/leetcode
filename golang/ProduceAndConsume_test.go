@@ -1,10 +1,8 @@
 package golang
 
 import (
-	"math/rand"
 	"reflect"
 	"testing"
-	"time"
 )
 
 func TestNewJobPipeline(t *testing.T) {
@@ -18,46 +16,23 @@ func TestNewJobPipeline(t *testing.T) {
 }
 
 func TestProduceConsume(t *testing.T) {
-	tt := struct {
-		total         int
-		limitProducer int
-		limitConsumer int
-	}{10, 3, 5}
-
-	ch := NewJobPipeline(3)
-	done := make(chan struct{})
-
-	// 开启协程来生产
-	producerLimiter := make(chan struct{}, tt.limitProducer)
-	for i := 0; i < tt.total; i++ {
-		producerLimiter <- struct{}{}
-		go func() {
-			defer func() {
-				<-producerLimiter
-			}()
-			Produce(ch, ProduceAndConsumeJob{
-				data: rand.Int(),
-				t:    time.Now(),
-			})
-		}()
-		done <- struct{}{}
+	seeds := []struct {
+		lc    int
+		lp    int
+		total int
+	}{
+		{3, 3, 100},
+		{10, 3, 1000},
+		{3, 10, 1000},
+		{100, 5, 100000},
+	}
+	for _, v := range seeds {
+		result := ProduceAndConsume(v.lc, v.lp, v.total)
+		if result.totalC != result.totalP && result.sumP != result.sumC {
+			t.Error(v, result)
+			t.Fatal("failed !")
+		}
 	}
 
-	// 开启消费
-	cnt := 0
-	for i := 0; i < tt.limitConsumer; i++ {
-		go func() {
-			for {
-				Consume(ch, func(job ProduceAndConsumeJob) {
-					cnt++
-				})
-			}
-		}()
-	}
-
-	<-done
-	if cnt != tt.total {
-		t.Log(tt, cnt)
-		t.Fatal("failed !")
-	}
+	t.Log("ProduceAndConsume passed !")
 }
