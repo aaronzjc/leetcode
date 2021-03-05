@@ -1,5 +1,8 @@
 package others
 
+// TIPS:
+// 根据辗转相除法: gcd(a, b) = gcd (b, a % b)
+
 func gcd(a int, b int) int {
 	var r int
 	if a < b {

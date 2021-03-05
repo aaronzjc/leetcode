@@ -2,6 +2,8 @@ package easy
 
 import "github.com/aaronzjc/leetcode/tools"
 
+// https://leetcode-cn.com/problems/merge-two-sorted-lists/
+
 func mergeTwoLists(l1 *tools.ListNode, l2 *tools.ListNode) (r *tools.ListNode) {
 	var rs *tools.ListNode
 	for l1 != nil || l2 != nil {
