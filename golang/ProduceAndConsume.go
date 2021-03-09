@@ -27,8 +27,8 @@ func NewJobPipeline(num int) chan ProduceAndConsumeJob {
 	return make(chan ProduceAndConsumeJob, num)
 }
 
-func ProduceAndConsume(limitC int, limitP int, total int) Checker {
-	ch := NewJobPipeline(limitC)
+func ProduceAndConsume(limitCh, limitP, limitC, total int) Checker {
+	ch := NewJobPipeline(limitCh)
 	checker := Checker{
 		Mutex: new(sync.Mutex),
 	}
@@ -66,8 +66,8 @@ func ProduceAndConsume(limitC int, limitP int, total int) Checker {
 	}()
 
 	wgc := &sync.WaitGroup{}
-	wgc.Add(3)
-	for i := 0; i < 3; i++ {
+	wgc.Add(limitC)
+	for i := 0; i < limitC; i++ {
 		go func() {
 			defer wgc.Done()
 			for {
