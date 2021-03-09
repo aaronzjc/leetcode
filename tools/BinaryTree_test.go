@@ -33,31 +33,26 @@ func TestPreOrder(t *testing.T) {
 
 	for _, v := range seeds {
 		tree := NewBinaryTree(v.data)
-		bak := tree
 		pre1 := tree.PreOrderTravel()
 		if !IsIntArrEquals(pre1, v.expectPre, true) {
 			t.Error(pre1, v.expectPre)
 			t.Fatal("failed !")
 		}
-		tree = bak
 		pre2 := tree.PreOrderTravelRecurse()
 		if !IsIntArrEquals(pre2, v.expectPre, true) {
 			t.Error(pre2, v.expectPre)
 			t.Fatal("failed !")
 		}
-		tree = bak
 		in := tree.InOrderTravelRecurse()
 		if !IsIntArrEquals(in, v.expectIn, true) {
 			t.Error(in, v.expectIn)
 			t.Fatal("failed !")
 		}
-		tree = bak
 		post := tree.PostOrderTravelRecurse()
 		if !IsIntArrEquals(post, v.expectPost, true) {
 			t.Error(post, v.expectPost)
 			t.Fatal("failed !")
 		}
-		tree = bak
 		dfs := tree.Dfs()
 		if !IsIntArrEquals(dfs, v.expectDfs, true) {
 			t.Error(dfs, v.expectDfs)
