@@ -116,6 +116,7 @@ make test_profile_html // 测试覆盖率html查看
 + 生产者消费者
 + 并发队列
 + 中间件
++ 一致性hash
 
 ## 工具包
 
