@@ -2,7 +2,7 @@ package easy
 
 // https://leetcode-cn.com/problems/longest-common-prefix/
 
-func longestCommonPrefix(strs []string) string {
+func longestCommonPrefix(strs []string) (res string) {
 	if len(strs) == 0 {
 		return ""
 	}
@@ -12,25 +12,22 @@ func longestCommonPrefix(strs []string) string {
 		}
 	}
 	var c byte
-	var res []byte
 	var i int
 	for {
 		c = 0
 		for _, v := range strs {
 			if i >= len(v) {
-				goto END
+				return
 			}
 			if c == 0 {
 				c = v[i]
 				continue
 			}
 			if v[i] != c {
-				goto END
+				return
 			}
 		}
-		res = append(res, c)
+		res += string(c)
 		i++
 	}
-END:
-	return string(res)
 }
