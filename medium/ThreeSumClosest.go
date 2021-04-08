@@ -1,7 +1,6 @@
 package medium
 
 import (
-	"fmt"
 	"sort"
 )
 
@@ -18,7 +17,6 @@ func threeSumClosest(nums []int, target int) (res int) {
 	sort.Ints(nums)
 	var i, j, k, minus, s int
 	l := len(nums) - 1
-	fmt.Println(nums)
 	pre := -1
 	for i <= l {
 		j = i + 1

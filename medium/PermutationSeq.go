@@ -1,7 +1,6 @@
 package medium
 
 import (
-	"fmt"
 	"strconv"
 )
 
@@ -20,7 +19,6 @@ func getPermutation(n int, k int) (res string) {
 		}
 		if len(str) == n {
 			counter++
-			fmt.Println(str, counter)
 			if counter == k {
 				res = str
 			}
