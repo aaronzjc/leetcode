@@ -10,7 +10,7 @@ type BinaryTreeNode struct {
 	Val   int
 }
 
-// NewBinaryTree 根据数组构造一个二叉树
+// NewBinaryTree 根据层次遍历数组构造一个二叉树，对于没有值的节点，采用虚拟节点
 func NewBinaryTree(data []int) (tree *BinaryTree) {
 	var build func(*BinaryTreeNode, int)
 	build = func(node *BinaryTreeNode, i int) {
