@@ -163,7 +163,7 @@ func IsL2StrArrayEquals(aStr [][]string, bStr [][]string, order bool) bool {
 
 // Permutation 单词的全排列
 func Permutation(words []string) []string {
-	ls := []string{}
+	var ls []string
 	var per func([]string, string)
 	per = func(words []string, res string) {
 		if len(words) == 0 {
@@ -174,7 +174,7 @@ func Permutation(words []string) []string {
 		}
 
 		for i := 0; i < len(words); i++ {
-			tmp := []string{}
+			var tmp []string
 			if i > 0 {
 				tmp = append(tmp, words[:i]...)
 			}
