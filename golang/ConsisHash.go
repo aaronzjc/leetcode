@@ -17,7 +17,7 @@ type ConsisHash struct {
 	M     map[int]string
 }
 
-func NewConsisHash(reps int, fn HashFunc) *ConsisHash {
+func NewConsistHash(reps int, fn HashFunc) *ConsisHash {
 	if fn == nil {
 		fn = crc32.ChecksumIEEE
 	}

@@ -6,7 +6,7 @@ import (
 )
 
 func TestConsisHash(t *testing.T) {
-	hs := NewConsisHash(3, func(key []byte) uint32 {
+	hs := NewConsistHash(3, func(key []byte) uint32 {
 		i, err := strconv.Atoi(string(key))
 		if err != nil {
 			panic(err)
@@ -41,8 +41,8 @@ func TestConsisHash(t *testing.T) {
 }
 
 func TestConsisHash2(t *testing.T) {
-	hash1 := NewConsisHash(1, nil)
-	hash2 := NewConsisHash(1, nil)
+	hash1 := NewConsistHash(1, nil)
+	hash2 := NewConsistHash(1, nil)
 
 	hash1.Add("Bill", "Bob", "Bonny")
 	hash2.Add("Bob", "Bonny", "Bill")
