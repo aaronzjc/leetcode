@@ -17,9 +17,14 @@
 ## 测试
 
 ```shell script
+# Linux或者OSX环境
 make test
 make test_profile // 测试覆盖率
 make test_profile_html // 测试覆盖率html查看
+# Win环境
+Make.bat test
+Make.bat test_profile // 测试覆盖率
+Make.bat test_profile_html // 测试覆盖率html查看
 ```
 
 ## 完成问题列表
