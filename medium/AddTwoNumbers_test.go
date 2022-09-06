@@ -22,7 +22,7 @@ func TestAddTwoNumbers(t *testing.T) {
 		l2 := tools.BuildLinklist(v.input2)
 		r1 := addTwoNumbers(l1, l2)
 		result := tools.LoopLinklist(r1)
-		if !tools.IsIntArrEquals(result, v.expect, true) {
+		if !tools.IsArrEquals(result, v.expect, true) {
 			t.Error(v.input1, v.input2, result, v.expect)
 			t.Fatalf("failed !")
 		}

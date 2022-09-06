@@ -17,7 +17,7 @@ func TestPlusOne(t *testing.T) {
 
 	for _, v := range seeds {
 		result := plusOne(v.input)
-		if !tools.IsIntArrEquals(result, v.expect, true) {
+		if !tools.IsArrEquals(result, v.expect, true) {
 			t.Error(v.expect, result)
 			t.Fatalf("failed !")
 		}

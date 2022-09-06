@@ -2,8 +2,8 @@ package tools
 
 import "testing"
 
-func TestIsIntArrayEqual(t *testing.T) {
-	seeds := []struct {
+func TestIsArrEqual(t *testing.T) {
+	seedsA := []struct {
 		a      []int
 		b      []int
 		expect bool
@@ -12,20 +12,14 @@ func TestIsIntArrayEqual(t *testing.T) {
 		{[]int{1, 2, 3}, []int{1, 3}, false},
 		{[]int{}, []int{}, true},
 	}
-
-	for _, v := range seeds {
-		result := IsIntArrEquals(v.a, v.b, false)
+	for _, v := range seedsA {
+		result := IsArrEquals(v.a, v.b, false)
 		if result != v.expect {
 			t.Error(v.a, v.b, v.expect, result)
 			t.Fatalf("failed !")
 		}
 	}
-
-	t.Log("passed !")
-}
-
-func TestIsStringArrayEqual(t *testing.T) {
-	seeds := []struct {
+	seedsB := []struct {
 		a      []string
 		b      []string
 		expect bool
@@ -35,9 +29,8 @@ func TestIsStringArrayEqual(t *testing.T) {
 		{[]string{}, []string{}, true},
 		{[]string{"=1", "a=0"}, []string{"=1", "a=0"}, true},
 	}
-
-	for _, v := range seeds {
-		result := IsStringArrEquals(v.a, v.b, false)
+	for _, v := range seedsB {
+		result := IsArrEquals(v.a, v.b, false)
 		if result != v.expect {
 			t.Error(v.a, v.b, v.expect, result)
 			t.Fatalf("failed !")
@@ -132,7 +125,7 @@ func TestPermutation(t *testing.T) {
 
 	for _, v := range seeds {
 		result := Permutation(v.input)
-		if !IsStringArrEquals(v.expect, result, false) {
+		if !IsArrEquals(v.expect, result, false) {
 			t.Error(v, result)
 			t.Fatalf("failed !")
 		}

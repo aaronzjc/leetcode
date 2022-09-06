@@ -18,7 +18,7 @@ func TestSortColors(t *testing.T) {
 
 	for _, v := range seeds {
 		sortColors(v.input)
-		if !tools.IsIntArrEquals(v.input, v.expect, true) {
+		if !tools.IsArrEquals(v.input, v.expect, true) {
 			t.Error(v)
 			t.Fatalf("failed !")
 		}

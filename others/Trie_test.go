@@ -28,7 +28,7 @@ func TestTrie(t *testing.T) {
 			t.Error("insert error", w.word)
 		}
 		dp := trie.Dump()
-		if tools.IsStringArrEquals(w.expect, trie.Dump(), false) == false {
+		if tools.IsArrEquals(w.expect, trie.Dump(), false) == false {
 			t.Error("dump error", "dp =", dp, "expect =", w.expect)
 		}
 	}
@@ -70,7 +70,7 @@ func TestTrie(t *testing.T) {
 	for _, v := range deletes {
 		res := trie.Del(v.word)
 		dp := trie.Dump()
-		if res != v.result || !tools.IsStringArrEquals(dp, v.expect, false) {
+		if res != v.result || !tools.IsArrEquals(dp, v.expect, false) {
 			t.Error(v, res, dp)
 		}
 	}

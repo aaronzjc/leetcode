@@ -6,97 +6,36 @@ import (
 	"sort"
 )
 
-// IsIntArrEquals 比较两个整形数组是否相等
-func IsIntArrEquals(a []int, b []int, order bool) bool {
+type AnySliceT interface {
+	int | float64 | string
+}
+
+// IsArrEquals 比较两个数组是否相等
+func IsArrEquals[T AnySliceT](a []T, b []T, order bool) bool {
 	if len(a)+len(b) == 0 {
 		return true
 	}
 	if !order {
-		sort.Ints(a)
-		sort.Ints(b)
+		sort.Slice(a, func(i, j int) bool {
+			return a[i] >= a[j]
+		})
+		sort.Slice(b, func(i, j int) bool {
+			return b[i] >= b[j]
+		})
 	}
 	return reflect.DeepEqual(a, b)
 }
-
-// IsStringArrEquals 比较两个字符串数组是否相等
-func IsStringArrEquals(a []string, b []string, order bool) bool {
-	if len(a)+len(b) == 0 {
-		return true
-	}
-	if !order {
-		sort.Strings(a)
-		sort.Strings(b)
-	}
-	return reflect.DeepEqual(a, b)
-}
-
-// 采用反射实现的一个比较，比较复杂，也不建议使用
-//func isArrOrSliceEquals(a interface{}, b interface{}, order bool) bool {
-//	var t int
-//	ta, tb := reflect.TypeOf(a).Kind(), reflect.TypeOf(b).Kind()
-//	va, vb := reflect.ValueOf(a), reflect.ValueOf(b)
-//	if ta != tb {
-//		return false
-//	}
-//	if va.Len() != vb.Len() {
-//		return false
-//	}
-//	if va.Len() == vb.Len() && va.Len() == 0 {
-//		return true
-//	}
-//	if ta != reflect.Slice && ta != reflect.Array {
-//		// 不支持的类型比较
-//		return false
-//	}
-//	switch reflect.TypeOf(va.Index(0)).Kind() {
-//	case reflect.Int:
-//		t = 0
-//	case reflect.String:
-//		t = 1
-//	}
-//
-//	var i int
-//	var ia, ib []int
-//	var sa, sb []string
-//	for i < va.Len() || i < vb.Len() {
-//		if i < va.Len() {
-//			if t == 0 {
-//				ia = append(ia, int(va.Index(i).Int()))
-//			} else if t == 1 {
-//				sa = append(sa, va.Index(i).String())
-//			}
-//		}
-//		if i < vb.Len() {
-//			if t == 0 {
-//				ib = append(ib, int(va.Index(i).Int()))
-//			} else if t == 1 {
-//				sb = append(sb, va.Index(i).String())
-//			}
-//		}
-//		i++
-//	}
-//	// 如果不比较顺序的化，这里先进行排序
-//	if t == 0 {
-//		if !order {
-//			sort.Ints(ia)
-//			sort.Ints(ib)
-//		}
-//		return reflect.DeepEqual(ia, ib)
-//	} else if t == 1 {
-//		if !order {
-//			sort.Strings(sa)
-//			sort.Strings(sb)
-//		}
-//		return reflect.DeepEqual(sa, sb)
-//	}
-//	return false
-//}
 
 // IsL2IntArrayEquals 比较两个整形二维数组是否相等
 func IsL2IntArrayEquals(a [][]int, b [][]int, order bool) bool {
 	var flatA, flatB []string
-	var i int
-	for i < len(a) || i < len(b) {
+	if len(a) != len(b) {
+		return false
+	}
+	if len(a)+len(b) == 0 {
+		return true
+	}
+	for i := 0; i < len(a); i++ {
 		if i < len(a) {
 			if !order {
 				sort.Ints(a[i])
@@ -111,9 +50,8 @@ func IsL2IntArrayEquals(a [][]int, b [][]int, order bool) bool {
 			bs, _ := json.Marshal(b[i])
 			flatB = append(flatB, string(bs))
 		}
-		i++
 	}
-	return IsStringArrEquals(flatA, flatB, order)
+	return IsArrEquals(flatA, flatB, order)
 }
 
 // IsL2ByteArrayEquals 比较两个二维字节数组是否相等
@@ -158,7 +96,7 @@ func IsL2StrArrayEquals(aStr [][]string, bStr [][]string, order bool) bool {
 		i++
 	}
 
-	return IsStringArrEquals(flatA, flatB, order)
+	return IsArrEquals(flatA, flatB, order)
 }
 
 // Permutation 单词的全排列

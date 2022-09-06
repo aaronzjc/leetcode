@@ -17,7 +17,7 @@ func TestGenerateParenthesis(t *testing.T) {
 
 	for _, v := range seeds {
 		result := generateParenthesis(v.input)
-		if !tools.IsStringArrEquals(result, v.expect, false) {
+		if !tools.IsArrEquals(result, v.expect, false) {
 			t.Error(v.input, v.expect, result)
 			t.Fatalf("failed !")
 		}

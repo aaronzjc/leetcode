@@ -18,7 +18,7 @@ func TestBubbleSort(t *testing.T) {
 
 	for _, v := range seeds {
 		BubbleSort(v.input)
-		if !tools.IsIntArrEquals(v.input, v.expect, true) {
+		if !tools.IsArrEquals(v.input, v.expect, true) {
 			t.Log(v)
 			t.Fatal("failed !")
 		}
@@ -40,7 +40,7 @@ func TestInsertSort(t *testing.T) {
 
 	for _, v := range seeds {
 		InsertSort(v.input)
-		if !tools.IsIntArrEquals(v.input, v.expect, true) {
+		if !tools.IsArrEquals(v.input, v.expect, true) {
 			t.Log(v)
 			t.Fatal("failed !")
 		}
@@ -62,7 +62,7 @@ func TestQuickSort(t *testing.T) {
 
 	for _, v := range seeds {
 		QuickSort(v.input)
-		if !tools.IsIntArrEquals(v.input, v.expect, true) {
+		if !tools.IsArrEquals(v.input, v.expect, true) {
 			t.Log(v)
 			t.Fatal("failed !")
 		}

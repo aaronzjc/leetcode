@@ -20,7 +20,7 @@ func TestFindSubstring(t *testing.T) {
 
 	for _, v := range seeds {
 		result := findSubstring(v.str, v.words)
-		if !tools.IsIntArrEquals(result, v.expect, false) {
+		if !tools.IsArrEquals(result, v.expect, false) {
 			t.Error(v, result)
 			t.Fatalf("failed !")
 		}

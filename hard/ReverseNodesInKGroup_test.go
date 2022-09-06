@@ -25,7 +25,7 @@ func TestReverseNodesInKGroup(t *testing.T) {
 		l1 := tools.BuildLinklist(v.input)
 		r1 := reverseKGroup(l1, v.k)
 		result := tools.LoopLinklist(r1)
-		if !tools.IsIntArrEquals(result, v.expect, true) {
+		if !tools.IsArrEquals(result, v.expect, true) {
 			t.Error(v.input, v.k, result, v.expect)
 			t.Fatalf("failed !")
 		}

@@ -22,7 +22,7 @@ func TestLoopLinklist(t *testing.T) {
 
 	expect := []int{1, 3, 2, 7, 4, 5}
 	result := LoopLinklist(head)
-	if !IsIntArrEquals(expect, result, true) {
+	if !IsArrEquals(expect, result, true) {
 		t.Error(expect, result)
 		t.Fatalf("failed !")
 	}
@@ -42,7 +42,7 @@ func TestBuildLinklist(t *testing.T) {
 	for _, v := range seeds {
 		l := BuildLinklist(v.input)
 		r := LoopLinklist(l)
-		if !IsIntArrEquals(v.input, v.expect, true) {
+		if !IsArrEquals(v.input, v.expect, true) {
 			t.Error(v.input, r)
 			t.Fatalf("failed !")
 		}
@@ -66,7 +66,7 @@ func TestReverseLinklist(t *testing.T) {
 		l := BuildLinklist(v.input)
 		r, _ := ReverseLinklist(l)
 		result := LoopLinklist(r)
-		if !IsIntArrEquals(result, v.expect, true) {
+		if !IsArrEquals(result, v.expect, true) {
 			t.Error(v.input, result, v.expect)
 			t.Fatalf("failed !")
 		}

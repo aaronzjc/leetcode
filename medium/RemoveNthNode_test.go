@@ -20,7 +20,7 @@ func TestRemoveNthNode(t *testing.T) {
 		l := tools.BuildLinklist(v.input)
 		r := removeNthFromEnd(l, v.idx)
 		result := tools.LoopLinklist(r)
-		if !tools.IsIntArrEquals(result, v.expect, true) {
+		if !tools.IsArrEquals(result, v.expect, true) {
 			t.Error(result, v.expect)
 			t.Fatalf("failed !")
 		}

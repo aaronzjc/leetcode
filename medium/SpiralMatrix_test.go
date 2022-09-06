@@ -49,7 +49,7 @@ func TestSpiralMatrix(t *testing.T) {
 
 	for _, v := range seeds {
 		result := spiralOrder(v.input)
-		if !tools.IsIntArrEquals(result, v.expect, true) {
+		if !tools.IsArrEquals(result, v.expect, true) {
 			t.Error(v, result)
 			t.Fatalf("failed !")
 		}

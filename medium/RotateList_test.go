@@ -22,7 +22,7 @@ func TestRotateList(t *testing.T) {
 		link := tools.BuildLinklist(v.input)
 		result := rotateRight(link, v.k)
 		reList := tools.LoopLinklist(result)
-		if !tools.IsIntArrEquals(reList, v.expect, true) {
+		if !tools.IsArrEquals(reList, v.expect, true) {
 			t.Error(v, reList)
 			t.Fatalf("failed !")
 		}

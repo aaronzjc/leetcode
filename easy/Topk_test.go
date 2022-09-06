@@ -19,7 +19,7 @@ func TestTopk(t *testing.T) {
 
 	for _, v := range seeds {
 		result := Topk(v.input, v.k)
-		if !tools.IsIntArrEquals(result, v.expect, false) {
+		if !tools.IsArrEquals(result, v.expect, false) {
 			t.Log(v, result)
 			t.Fatal("failed !")
 		}

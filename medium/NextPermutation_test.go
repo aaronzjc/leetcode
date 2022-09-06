@@ -17,7 +17,7 @@ func TestNextPermutation(t *testing.T) {
 
 	for _, v := range seeds {
 		nextPermutation(v.input)
-		if !tools.IsIntArrEquals(v.input, v.expect, true) {
+		if !tools.IsArrEquals(v.input, v.expect, true) {
 			t.Error(v)
 			t.Fatalf("failed !")
 		}

@@ -20,7 +20,7 @@ func TestMergeSortedLinklist(t *testing.T) {
 		lb := tools.BuildLinklist(v.b)
 		r := mergeTwoLists(la, lb)
 		result := tools.LoopLinklist(r)
-		if !tools.IsIntArrEquals(result, v.expect, true) {
+		if !tools.IsArrEquals(result, v.expect, true) {
 			t.Error(v.a, v.b, v.expect, result)
 			t.Fatalf("failed !")
 		}

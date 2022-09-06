@@ -26,7 +26,7 @@ func TestMiddleware(t *testing.T) {
 	ctx.next()
 
 	expect := []string{"bf-a", "bf-b", "af-c1", "af-c2", "af-b", "af-a"}
-	if !tools.IsStringArrEquals(input, expect, true) {
+	if !tools.IsArrEquals(input, expect, true) {
 		t.Log(input, expect)
 		t.Fatal("failed !")
 	}

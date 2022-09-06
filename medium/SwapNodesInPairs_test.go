@@ -21,7 +21,7 @@ func TestSwapPairs(t *testing.T) {
 	for _, v := range seeds {
 		l1 := tools.BuildLinklist(v.input)
 		r1 := tools.LoopLinklist(swapPairs(l1))
-		if !tools.IsIntArrEquals(r1, v.expect, true) {
+		if !tools.IsArrEquals(r1, v.expect, true) {
 			t.Error(r1, v.expect)
 			t.Fatalf("failed !")
 		}

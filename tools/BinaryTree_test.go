@@ -41,32 +41,32 @@ func TestPreOrder(t *testing.T) {
 	for _, v := range seeds {
 		tree := NewBinaryTree(v.data)
 		pre1 := tree.PreOrderTravel()
-		if !IsIntArrEquals(pre1, v.expectPre, true) {
+		if !IsArrEquals(pre1, v.expectPre, true) {
 			t.Error(pre1, v.expectPre)
 			t.Fatal("failed !")
 		}
 		pre2 := tree.PreOrderTravelRecurse()
-		if !IsIntArrEquals(pre2, v.expectPre, true) {
+		if !IsArrEquals(pre2, v.expectPre, true) {
 			t.Error(pre2, v.expectPre)
 			t.Fatal("failed !")
 		}
 		in := tree.InOrderTravelRecurse()
-		if !IsIntArrEquals(in, v.expectIn, true) {
+		if !IsArrEquals(in, v.expectIn, true) {
 			t.Error(in, v.expectIn)
 			t.Fatal("failed !")
 		}
 		post := tree.PostOrderTravelRecurse()
-		if !IsIntArrEquals(post, v.expectPost, true) {
+		if !IsArrEquals(post, v.expectPost, true) {
 			t.Error(post, v.expectPost)
 			t.Fatal("failed !")
 		}
 		dfs := tree.Dfs()
-		if !IsIntArrEquals(dfs, v.expectDfs, true) {
+		if !IsArrEquals(dfs, v.expectDfs, true) {
 			t.Error(dfs, v.expectDfs)
 			t.Fatal("failed !")
 		}
 		bfs := tree.Bfs()
-		if !IsIntArrEquals(bfs, v.expectBfs, true) {
+		if !IsArrEquals(bfs, v.expectBfs, true) {
 			t.Error(bfs, v.expectBfs)
 			t.Fatal("failed !")
 		}

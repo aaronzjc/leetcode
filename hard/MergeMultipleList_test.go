@@ -31,7 +31,7 @@ func TestMergeKLists(t *testing.T) {
 		}
 		r := mergeKLists(llist)
 		result := tools.LoopLinklist(r)
-		if !tools.IsIntArrEquals(result, v.expect, true) {
+		if !tools.IsArrEquals(result, v.expect, true) {
 			t.Error(v.expect, result)
 			t.Fatalf("failed !")
 		}

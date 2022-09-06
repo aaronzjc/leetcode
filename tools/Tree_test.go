@@ -37,7 +37,7 @@ func TestBuildTreeFromArr(t *testing.T) {
 	res1 := BFSTravel(tr)
 	res2 := BFSTravel(tt)
 
-	if !IsIntArrEquals(res1, res2, true) {
+	if !IsArrEquals(res1, res2, true) {
 		t.Error(res1, res2)
 		t.Fatalf("failed !")
 	}
@@ -58,7 +58,7 @@ func TestDFSTravel(t *testing.T) {
 	for _, v := range seeds {
 		tr := BuildTreeFromArr(v.tree, v.keys)
 		trs := DFSTravel(tr)
-		if !IsIntArrEquals(trs, v.expect, true) {
+		if !IsArrEquals(trs, v.expect, true) {
 			t.Error(v.tree, trs, v.expect)
 			t.Fatalf("failed !")
 		}
@@ -80,7 +80,7 @@ func TestDFSRecurseTravel(t *testing.T) {
 	for _, v := range seeds {
 		tr := BuildTreeFromArr(v.tree, v.keys)
 		trs := DFSRecurseTravel(tr)
-		if !IsIntArrEquals(trs, v.expect, true) {
+		if !IsArrEquals(trs, v.expect, true) {
 			t.Error(v.tree, trs, v.expect)
 			t.Fatalf("failed !")
 		}
@@ -102,7 +102,7 @@ func TestBFSTravel(t *testing.T) {
 	for _, v := range seeds {
 		tr := BuildTreeFromArr(v.tree, v.keys)
 		trs := BFSTravel(tr)
-		if !IsIntArrEquals(trs, v.expect, true) {
+		if !IsArrEquals(trs, v.expect, true) {
 			t.Error(trs, v.expect)
 			t.Fatalf("failed !")
 		}
