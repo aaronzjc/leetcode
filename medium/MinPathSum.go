@@ -13,7 +13,6 @@ func minPathSum(grid [][]int) (res int) {
 	for y := 0; y < n; y++ {
 		for x := 0; x < m; x++ {
 			if x == 0 && y == 0 {
-				grid[y][x] = grid[y][x]
 				continue
 			}
 			if y == 0 && x > 0 {

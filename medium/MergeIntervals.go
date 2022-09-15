@@ -20,8 +20,7 @@ func merge(intervals [][]int) (res [][]int) {
 		}
 		resMap = append(resMap, ele)
 
-		var i int
-		i = len(resMap) - 1
+		i := len(resMap) - 1
 		for i > 0 {
 			cur := resMap[i]
 			pre := resMap[i-1]
