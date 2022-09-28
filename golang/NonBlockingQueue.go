@@ -1,3 +1,8 @@
+/**
+ * 无锁队列
+ * 看样子不是无锁的。链表实现的有锁队列。
+ */
+
 package golang
 
 import (
@@ -5,11 +10,13 @@ import (
 	"sync"
 )
 
+// NonBlockQueueItem 队列元素
 type NonBlockQueueItem struct {
 	Val  int
 	next *NonBlockQueueItem
 }
 
+// NonBlockQueue 无锁队列
 type NonBlockQueue struct {
 	pushLock *sync.Mutex
 	popLock  *sync.Mutex
@@ -18,6 +25,7 @@ type NonBlockQueue struct {
 	tail *NonBlockQueueItem
 }
 
+// NewNonBlockQueue 初始化
 func NewNonBlockQueue() *NonBlockQueue {
 	return &NonBlockQueue{
 		pushLock: &sync.Mutex{},
@@ -25,6 +33,7 @@ func NewNonBlockQueue() *NonBlockQueue {
 	}
 }
 
+// Push 添加
 func (q *NonBlockQueue) Push(item int) {
 	node := &NonBlockQueueItem{
 		Val:  item,
@@ -44,6 +53,7 @@ func (q *NonBlockQueue) Push(item int) {
 	}
 }
 
+// Pop 移除
 func (q *NonBlockQueue) Pop() (int, error) {
 	// TODO: using cas instead of lock
 	q.popLock.Lock()
@@ -58,6 +68,7 @@ func (q *NonBlockQueue) Pop() (int, error) {
 	return node.Val, nil
 }
 
+// Dump 打印全部
 func (q *NonBlockQueue) Dump() (res []int) {
 	it := q.head
 	for it != nil {

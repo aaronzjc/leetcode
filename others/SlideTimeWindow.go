@@ -21,6 +21,7 @@ type BucketItem struct {
 	Val   int
 }
 
+// NewSlideWindowOfTime 初始化窗口
 func NewSlideWindowOfTime(bucketMs int64, bucketLength int) *SlideWindowOfTime {
 	sw := &SlideWindowOfTime{
 		BucketMs:     bucketMs,
@@ -49,6 +50,7 @@ func NewSlideWindowOfTime(bucketMs int64, bucketLength int) *SlideWindowOfTime {
 	return sw
 }
 
+// CurrentBucket 获取当前时间对应的Bucket
 func (s *SlideWindowOfTime) CurrentBucket() (*BucketItem, error) {
 	now := time.Now().UnixMilli()
 	start := now - (now % s.BucketMs)
@@ -66,6 +68,7 @@ func (s *SlideWindowOfTime) CurrentBucket() (*BucketItem, error) {
 	return oldBucket, nil
 }
 
+// Count 统计窗口中的总数
 func (sw *SlideWindowOfTime) Count() int {
 	now := time.Now().UnixMilli()
 	start := now - (now % sw.BucketMs)

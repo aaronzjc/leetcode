@@ -10,11 +10,13 @@ import (
 // 1. 带缓冲的通道
 // 2. 限制生产者的并发数
 
+// ProduceAndConsumeJob 任务
 type ProduceAndConsumeJob struct {
 	data int
 	t    time.Time
 }
 
+// Checker 辅助测试
 type Checker struct {
 	*sync.Mutex
 	sumP   int
@@ -23,10 +25,12 @@ type Checker struct {
 	totalC int
 }
 
+// NewJobPipeline 新建任务管道
 func NewJobPipeline(num int) chan ProduceAndConsumeJob {
 	return make(chan ProduceAndConsumeJob, num)
 }
 
+// ProduceAndConsume 生产消费模型
 func ProduceAndConsume(limitCh, limitP, limitC, total int) Checker {
 	ch := NewJobPipeline(limitCh)
 	checker := Checker{

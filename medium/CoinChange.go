@@ -5,6 +5,7 @@ package medium
 // Tips：
 // dp[i] = min(dp[i], dp[i-coin])
 
+// CoinChange 换硬币
 func CoinChange(coins []int, amount int) int {
 	dp := make([]int, amount+1, amount+1)
 	for i := 1; i <= amount; i++ {

@@ -1,9 +1,11 @@
 package tools
 
+// BinaryTree 二叉树
 type BinaryTree struct {
 	Root *BinaryTreeNode
 }
 
+// BinaryTreeNode 二叉树节点
 type BinaryTreeNode struct {
 	Left  *BinaryTreeNode
 	Right *BinaryTreeNode
@@ -104,7 +106,7 @@ func (t *BinaryTree) PostOrderTravelRecurse() (res []int) {
 	return
 }
 
-// Dfs
+// Dfs Dfs遍历
 func (t *BinaryTree) Dfs() (res []int) {
 	if t.Root == nil {
 		return
@@ -126,7 +128,7 @@ func (t *BinaryTree) Dfs() (res []int) {
 	return
 }
 
-// Bfs
+// Bfs Bfs遍历
 func (t *BinaryTree) Bfs() (res []int) {
 	if t.Root == nil {
 		return

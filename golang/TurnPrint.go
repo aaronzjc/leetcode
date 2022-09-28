@@ -6,6 +6,7 @@ import (
 
 // 用协程的方式交替打印数字和字母
 
+// TurnPrint 交替打印
 func TurnPrint(counter int) string {
 	chNum := make(chan struct{})
 	chChar := make(chan struct{})

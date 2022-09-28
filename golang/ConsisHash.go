@@ -1,15 +1,17 @@
 package golang
 
 import (
-	"github.com/aaronzjc/leetcode/others"
 	"hash/crc32"
 	"sort"
 	"strconv"
+
+	"github.com/aaronzjc/leetcode/others"
 )
 
-// 一致性hash
+// HashFunc Hash函数
 type HashFunc func([]byte) uint32
 
+// ConsistHash 一致性Hash
 type ConsistHash struct {
 	hash  HashFunc
 	Reps  int   // 副本数
@@ -17,6 +19,7 @@ type ConsistHash struct {
 	M     map[int]string
 }
 
+// NewConsistHash 初始化
 func NewConsistHash(reps int, fn HashFunc) *ConsistHash {
 	if fn == nil {
 		fn = crc32.ChecksumIEEE
