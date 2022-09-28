@@ -28,18 +28,17 @@ type SkipListNode struct {
 
 type SkipList struct {
 	head, tail *SkipListNode
-	len        int
 }
 
 func NewSkipList() *SkipList {
 	list := &SkipList{
 		head: &SkipListNode{
 			val:   MIN_INT,
-			level: make([]*SkipListNode, MAX_LEVEL, MAX_LEVEL),
+			level: make([]*SkipListNode, MAX_LEVEL),
 		},
 		tail: &SkipListNode{
 			val:   MAX_INT,
-			level: make([]*SkipListNode, MAX_LEVEL, MAX_LEVEL),
+			level: make([]*SkipListNode, MAX_LEVEL),
 		},
 	}
 	for i := 0; i < MAX_LEVEL; i++ {
@@ -75,7 +74,7 @@ func (sl *SkipList) Add(val int) *SkipListNode {
 	level := RandomLevel()
 	node := &SkipListNode{
 		val:   val,
-		level: make([]*SkipListNode, level, level),
+		level: make([]*SkipListNode, level),
 	}
 	for i := level - 1; i >= 0; i-- {
 		p = update[i]

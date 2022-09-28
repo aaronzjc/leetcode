@@ -85,7 +85,7 @@ func (t *Trie) Search(word string) bool {
 }
 
 func (t *Trie) Del(word string) bool {
-	if t.Search(word) == false {
+	if !t.Search(word) {
 		return false
 	}
 	w := []byte(word)
@@ -124,10 +124,7 @@ func (t *Trie) Dump() []string {
 	for len(l) > 0 {
 		for _, node := range l {
 			res = append(res, fmt.Sprintf("%s%s", string(node.Val), strconv.Itoa(node.Ref)))
-			l = l[1:]
-			for _, child := range node.Children {
-				l = append(l, child)
-			}
+			l = append(l[1:], node.Children...)
 		}
 	}
 	return res
