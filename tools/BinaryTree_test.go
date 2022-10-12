@@ -74,3 +74,25 @@ func TestPreOrder(t *testing.T) {
 
 	t.Log("BinaryTree passed !")
 }
+
+func TestNewBinaryFromPreIn(t *testing.T) {
+	seeds := []struct {
+		Pre []int
+		In  []int
+	}{
+		{
+			Pre: []int{1, 2, 4, 5, 3, 6, 7},
+			In:  []int{4, 2, 5, 1, 6, 3, 7},
+		},
+	}
+	for _, v := range seeds {
+		tree := NewBinaryTreeByPreIn(v.Pre, v.In)
+		newPre := tree.PreOrderTravel()
+		newIn := tree.InOrderTravelRecurse()
+		if !(IsArrEquals(v.Pre, newPre, true) && IsArrEquals(v.In, newIn, true)) {
+			t.Fatalf("failed")
+		}
+	}
+
+	t.Log("NewBinaryTreeByPreIn passed !")
+}

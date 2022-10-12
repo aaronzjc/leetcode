@@ -40,6 +40,37 @@ func NewBinaryTree(data []int) (tree *BinaryTree) {
 	return
 }
 
+// NewBinaryTreeByPreIn 根据先序&中序构造二叉树
+func NewBinaryTreeByPreIn(pre []int, in []int) *BinaryTree {
+	var build func(pre, in []int) *BinaryTreeNode
+	build = func(pre, in []int) *BinaryTreeNode {
+		if len(pre) == 0 || len(in) == 0 {
+			return nil
+		}
+		root := &BinaryTreeNode{Val: pre[0]}
+		for i := 0; i < len(in); i++ {
+			if root.Val != in[i] {
+				continue
+			}
+			// 划分左子树，右子树。然后，根据左子树和右子树，递归找到根节点。
+			var lin, rin, lpre, rpre []int
+			if i > 0 {
+				lin = in[:i]
+				lpre = pre[1 : len(lin)+1]
+			}
+			if i < len(in) {
+				rin = in[i+1:]
+				rpre = pre[len(in)-len(rin):]
+			}
+			root.Left = build(lpre, lin)
+			root.Right = build(rpre, rin)
+		}
+		return root
+	}
+	root := build(pre, in)
+	return &BinaryTree{Root: root}
+}
+
 // PreOrderTravelRecurse 先序遍历-递归
 func (t *BinaryTree) PreOrderTravelRecurse() (res []int) {
 	var loop func(node *BinaryTreeNode)
@@ -64,7 +95,7 @@ func (t *BinaryTree) PreOrderTravel() (res []int) {
 	stack = append(stack, t.Root)
 	for len(stack) > 0 {
 		node := stack[len(stack)-1]
-		stack = stack[0 : len(stack)-1]
+		stack = stack[:len(stack)-1]
 		res = append(res, node.Val)
 		if node.Right != nil {
 			stack = append(stack, node.Right)

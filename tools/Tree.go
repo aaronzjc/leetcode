@@ -45,25 +45,22 @@ func BuildTreeFromArr(data map[int][]int, keys []int) (tr *Tree) {
 	return
 }
 
-// DFSTravel 深度优先遍历非递归
+// DFSTravel 深度优先遍历-非递归
 func DFSTravel(t *Tree) (res []int) {
-	var l []*TreeNode
-	l = append(l, t.Root)
-	for len(l) > 0 {
-		node := l[0]
+	var stack []*TreeNode
+	stack = append(stack, t.Root)
+	for len(stack) > 0 {
+		node := stack[len(stack)-1]
+		stack = stack[:len(stack)-1]
 		res = append(res, node.Val)
-		l = l[1:]
-		i := len(node.Children) - 1
-		for i >= 0 {
-			child := node.Children[i]
-			l = append([]*TreeNode{child}, l...)
-			i--
+		for i := len(node.Children) - 1; i >= 0; i-- {
+			stack = append(stack, node.Children[i])
 		}
 	}
 	return
 }
 
-// DFSRecurseTravel 深度优先遍历递归
+// DFSRecurseTravel 深度优先遍历-递归
 func DFSRecurseTravel(t *Tree) (res []int) {
 	var travel func(node *TreeNode, collect *[]int)
 	travel = func(node *TreeNode, collec *[]int) {
@@ -80,18 +77,15 @@ func DFSRecurseTravel(t *Tree) (res []int) {
 	return
 }
 
-// BFSTravel 广度优先遍历
+// BFSTravel 广度优先遍历-非递归
 func BFSTravel(t *Tree) (res []int) {
-	var l []*TreeNode
-	l = append(l, t.Root)
-	for len(l) > 0 {
-		for _, node := range l {
-			res = append(res, node.Val)
-			l = l[1:]
-			for _, child := range node.Children {
-				l = append(l, child)
-			}
-		}
+	var queue []*TreeNode
+	queue = append(queue, t.Root)
+	for len(queue) > 0 {
+		node := queue[0]
+		queue = queue[1:]
+		queue = append(queue, node.Children...)
+		res = append(res, node.Val)
 	}
 	return
 }
