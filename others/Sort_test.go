@@ -1,8 +1,9 @@
 package others
 
 import (
-	"github.com/aaronzjc/leetcode/tools"
 	"testing"
+
+	"github.com/aaronzjc/leetcode/tools"
 )
 
 func TestBubbleSort(t *testing.T) {
@@ -58,6 +59,7 @@ func TestQuickSort(t *testing.T) {
 		{[]int{1}, []int{1}},
 		{[]int{1, 2, 2, 3, 4, 5}, []int{1, 2, 2, 3, 4, 5}},
 		{[]int{5, 4, 3, 2, 1}, []int{1, 2, 3, 4, 5}},
+		{[]int{5, 4, 3, 2}, []int{2, 3, 4, 5}},
 	}
 
 	for _, v := range seeds {

@@ -24,3 +24,25 @@ func TestBinarySearchLarge(t *testing.T) {
 
 	t.Log("BinarySearchLarge passed !")
 }
+
+func TestBinarySearch(t *testing.T) {
+	arr := []int{1, 4, 7, 10, 13, 17, 20}
+	seeds := []struct {
+		search int
+		expect int
+	}{
+		{7, 2},
+		{17, 5},
+		{999, -1},
+	}
+
+	for _, v := range seeds {
+		result := BinarySearch(arr, v.search)
+		if result != v.expect {
+			t.Error(result, v.expect)
+			t.Fatalf("failed !")
+		}
+	}
+
+	t.Log("BinarySearch passed !")
+}
