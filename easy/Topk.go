@@ -4,7 +4,7 @@ import (
 	"container/heap"
 )
 
-// TopK 最大K值
+// TopK 最小K值
 func Topk(arr []int, k int) (res []int) {
 	h := new(myHeap)
 	for i := 0; i < k; i++ {
@@ -45,4 +45,16 @@ func (h *myHeap) Pop() (v interface{}) {
 
 func (h *myHeap) Push(v interface{}) {
 	*h = append(*h, v.(int))
+}
+
+// TopK 最小K值。采用冒泡排序思想，复杂度是n*k。
+func Topk2(arr []int, k int) (res []int) {
+	for i := 0; i < k; i++ {
+		for j := 0; j < len(arr)-1; j++ {
+			if arr[j] < arr[j+1] {
+				arr[j], arr[j+1] = arr[j+1], arr[j]
+			}
+		}
+	}
+	return arr[len(arr)-k:]
 }
