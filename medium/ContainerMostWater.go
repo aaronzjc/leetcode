@@ -11,9 +11,7 @@ func maxArea(height []int) int {
 		if h > height[right] {
 			h = height[right]
 		}
-		w := right - left
-
-		area := w * h
+		area := (right - left) * h
 		if result < area {
 			result = area
 		}
